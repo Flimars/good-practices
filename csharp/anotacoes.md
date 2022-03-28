@@ -1,3 +1,7 @@
+# Atenção
+
+Esse documento é de uso pessoal e não faz parte do projeto.
+
 # Boas práticas
 
 Nosso repositório: https://github.com/deliver-it/good-practices
