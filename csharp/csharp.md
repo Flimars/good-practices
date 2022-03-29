@@ -6,7 +6,7 @@ A única métrica válida para qualidade de código é: wtf/minuto
 
 Princípios de engenharia de software retirados do livro Clean Code (Robert C. Martin), adaptados para .NET/.NET Core.
 
-Nem todos os princípios deve ser estritamente seguidos. Além disso, poucos desses princípios são universalmente aceitos. Esses princípios nada mais além de guias, mas foram criados e aprimorados coletivamente através de anos de prática e experiência pelos autores do livro.
+Nem todos os princípios devem ser estritamente seguidos. Além disso, poucos desses princípios são universalmente aceitos. Esses princípios nada mais além de guias, mas foram criados e aprimorados coletivamente através de anos de prática e experiência pelos autores do livro.
 
 # Nomes
 
@@ -27,7 +27,7 @@ int daySinceModified;
 
 ## Evite nomes que enganam
 
-O nome de uma variável defe refletir para o que ela é usada.
+O nome de uma variável deve refletir para o que ela é usada.
 
 **Ruim**
 
@@ -43,7 +43,7 @@ var listOfEmployee = _employeeService.GetEmployees().ToList();
 
 ## Evite notação Hungarian (Hungarian Notation)
 
-A notação Hungarian afirma o tipo de variável no nome. É desnecessário em IDE's modernas, pois ela identificam o tipo.
+A notação Hungarian afirma o tipo de variável no nome. É desnecessário em IDE's modernas, pois elas identificam o tipo.
 
 **Ruim**
 
@@ -262,7 +262,7 @@ foreach (var location in locations)
 
 ## Evite a string mágica
 
-Strings mágicas são valores strinbg que são especificado diretamente no código de aplicação e tem impácto no comportamento da aplicação. Frequentemente tais strings serão duplicadas no sistema. Como elas não podem ser automaticamente atualizadas no sistema usando ferramentas, elas se tornam fonte de bugs quando são feitas modificações em algumas strings mas não em outras.
+Strings mágicas são valores string que são especificados diretamente no código de aplicação e tem impacto no comportamento da aplicação. Frequentemente tais strings serão duplicadas no sistema. Como elas não podem ser automaticamente atualizadas no sistema usando ferramentas, elas se tornam fonte de bugs quando são feitas modificações em algumas strings mas não em outras.
 
 **Ruim**
 
@@ -452,11 +452,11 @@ public void CreateMicrobrewery(string breweryName = "Hipster Brew Co.")
 
 ## Evite efeitos colaterais
 
-Uma função tem efeitos colaterais se ela faz alguma coisa além de receber um valor (ou valores) e retornar uma valor (ou valores), por exemplo, acidentalmente: modificar uma variável global, escrever em um arquivo, entregar todo o teu dinheiro para um estranho.
+Uma função tem efeitos colaterais se ela faz alguma coisa além de receber um valor (ou valores) e retornar um valor (ou valores), por exemplo, acidentalmente: modificar uma variável global, escrever em um arquivo, entregar todo o teu dinheiro para um estranho.
 
-Ocasionalmente é necessário ter efeitos colaterais: você pode precisar escrever em um arquivo. O que você precisa faxer é centralizar onde você está fazendo este trabalho. Não tenha várias funções e classes escrevendo em um arquivo. Tenha um serviço que faça isso, e **somente um**.
+Ocasionalmente é necessário ter efeitos colaterais: você pode precisar escrever em um arquivo. O que você precisa fazer é centralizar onde você está fazendo este trabalho. Não tenha várias funções e classes escrevendo em um arquivo. Tenha um serviço que faça isso, e **somente um**.
 
-O objeto é evitar um problemas comuns, como compartilhar estado entre objetos sem estrutura, usar dados mutáveis que pode ser escritos por qualquer classe/método e não centralizar o local onde os efeitos colaterais podem ocorrer.
+O objeto é evitar problemas comuns, como compartilhar estado entre objetos sem estrutura, usar dados mutáveis que pode ser escritos por qualquer classe/método e não centralizar o local onde os efeitos colaterais podem ocorrer.
 
 **Ruim**
 
@@ -528,7 +528,7 @@ Essa parece ser uma tarefa impossível. A primeira vez que se ouve isso, geralme
 
 > "como vou programar qualquer coisa se usar `if`?"
 
-A respota é: você pode usar polimorfismo para obter o mesmo resultado em muitas tarefas. A segunda frase do desenvolvedor é:
+A resposta é: você pode usar polimorfismo para obter o mesmo resultado em muitas tarefas. A segunda frase do desenvolvedor é:
 
 > Legal, mas por que eu iria querer fazer isso?
 
@@ -701,7 +701,7 @@ public void CreateTempFile(string name)
 
 ## Não escreva funções globais
 
-Sobrecarregar e poluir globais é uma má prática em muitas linguagens. Pode haver conflitos com outras bibliotecas e o usuário do código não estaria ciente até ele ter uma exceção em produção. Pense no seguinte: você escreve uma função global `Config()`, mas ela pode conflitar com outra bilioteca que tentar fazer a mesma coisa.
+Sobrecarregar e poluir globais é uma má prática em muitas linguagens. Pode haver conflitos com outras bibliotecas e o usuário do código não estaria ciente até ele ter uma exceção em produção. Pense no seguinte: você escreve uma função global `Config()`, mas ela pode conflitar com outra biblioteca que tentar fazer a mesma coisa.
 
 **Ruim**
 
@@ -743,7 +743,7 @@ Singleton é um anti-padrão. Parafraseando Brian Burton:
 >
 > 1. De forma inerente causam alto acoplamento. O alto acoplamento faz com que os testes sejam difíceis, pois é difícil de fazer uma classe que finge ser ela para testes.
 >
-> 1. Carregam seu estado por todo o ciclo de vida do sistema e isso é mais uma dica para os problemas na hora do teste: você pode terminar em uma situação onde os testes precisam ter uma ordem específica, o que é um grande "não" se tratando de testes unitários. Por quê? Porque todo teste unitário deve ser independente um do outro.
+> 1. Carregam seu estado por todo o ciclo de vida do sistema e isso é mais uma dica para os problemas na hora do teste: você pode terminar em uma situação em que os testes precisam ter uma ordem específica, o que é um grande "não" se tratando de testes unitários. Por quê? Porque todo teste unitário deve ser independente um do outro.
 
 **Ruim**
 
@@ -795,7 +795,7 @@ E agora você deve ter uma instância de `DBConnection` na tua aplicação.
 
 ## Argumentos de função (2 ou menos, idealmente)
 
-Limitar o número de parâmetros em funções é incrivelmente importante porque faz com que os testes fiquem mais fáceis. Tendo mais de três parâmetros leva a uma explosão combinatorial onde se deve testar muitos e muitos casos com cada argumento separadamente.
+Limitar o número de parâmetros em funções é incrivelmente importante porque faz com que os testes fiquem mais fáceis. Tendo mais de três parâmetros leva a uma explosão combinatória onde se deve testar muitos e muitos casos com cada argumento separadamente.
 
 Zero argumentos é o ideal. Um ou dois argumentos é ok e três deve ser evitado. Geralmente, quando se tem mais de dois argumentos é porque a sua função está fazendo muito trabalho. Nos casos em que ela não está, a maioria das vezes um objeto de alto nível é suficiente como argumento.
 
@@ -835,7 +835,7 @@ public void CreateMenu(MenuConfig config)
 
 ## Funções devem fazer somente uma coisa
 
-Essa é, de longe, a regra mais importante da engeharia de software. Quando funções fazem mais de uma coisa, elas são difíceis de escrever, testar e raciocianar sobre. Quando você consegue isolar uma função a somente uma ação, ela pode ser refatorada facilmente e a leitura do seu código será muito mais fácil. Se você levar consigo nada mais desse guia além disso, você já estará a frente de muitos desenvolvedores.
+Essa é, de longe, a regra mais importante da engenharia de software. Quando funções fazem mais de uma coisa, elas são difíceis de escrever, testar e raciocinar sobre. Quando você consegue isolar uma função a somente uma ação, ela pode ser refatorada facilmente e a leitura do seu código será muito mais fácil. Se você levar consigo nada mais desse guia além disso, você já estará à frente de muitos desenvolvedores.
 
 **Ruim**
 
@@ -1037,7 +1037,7 @@ if (article.IsPublished())
 
 ## Remova código morto
 
-Código morto é tão ruim quanto código duplicado. Não há motivo para mantê-lo no código-fonte. Se não está sendo usado, joque-o fora. Ele estará seguro no histórico de versões caso ele seja necessário.
+Código morto é tão ruim quanto código duplicado. Não há motivo para mantê-lo no código-fonte. Se não está sendo usado, jogue-o fora. Ele estará seguro no histórico de versões caso ele seja necessário.
 
 **Ruim**
 
@@ -1081,7 +1081,7 @@ Vantagens:
 1. Encapsula a representação interna.
 1. Mais fácil de fazer log e adicionar tratamento e erros quando se usa `get` e `set`.
 1. Ao herdar desta classe é possível sobrepor o comportamento padrão desse objeto.
-1. Pode-se aplicar o padrão Lazy Loading na propriedades desse objeto, por exemplo, quando se busca ele de um servidor.
+1. Pode-se aplicar o padrão Lazy Loading nas propriedades desse objeto, por exemplo, quando se busca ele de um servidor.
 
 Além disso, é parte do princípio Aberto/Fechado da orientação à objetos:
 
@@ -1185,7 +1185,7 @@ Console.WriteLine(employee.Name); // Employee name: John Doe
 
 ## Use encadeamento de métodos
 
-Esse padrão é muito úti e é comum encontrarmos ele em bibliotecas. Ele permite que o código seja expressivo e menos verboso. Por essa razão, use encadeamento de métodos e veja como o seu código fica limpo.
+Esse padrão é muito útil e é comum encontrarmos ele em bibliotecas. Ele permite que o código seja expressivo e menos verboso. Por essa razão, use encadeamento de métodos e veja como o seu código fica limpo.
 
 **Ruim**
 
@@ -1253,11 +1253,11 @@ internal static void ListFluentExtensions()
 }
 ```
 
-## Prefira composição em vez de herença
+## Prefira composição em vez de herança
 
 Conforme dito no famoso livro _Design Patterns_ escrito pela Gang of Four, você deve preferir composição em vez de herança onde for possível. Existem várias boas razões para usar herança e várias boas razões para usar composição.
 
-O ponto principal desta máxima é que quando a sua cabeça vai instintivalmente para herança, pense duas vezes e analise se composição faria a modelagem do seu problema melhor. Às vezes, é possível.
+O ponto principal desta máxima é que quando a sua cabeça vai instintivamente para herança, pense duas vezes e analise se composição faria a modelagem do seu problema melhor. Às vezes, é possível.
 
 Abaixo uma lista simples e não exaustiva  de **SUGESTÕES** de quando se deve usar herança:
 
@@ -1341,7 +1341,7 @@ class Employee
 
 ## O que é SOLID?
 
-**SOLID** é um acrônimo mneônico  apresentado por Michael Feathers para os primeiros cinco princípios nomeados por Robert Martin, o que significa, os 5 princípios básicos da programação e projeto orientado à objetos.
+**SOLID** é um acrônimo mnemônico  apresentado por Michael Feathers para os primeiros cinco princípios nomeados por Robert Martin, o que significa, os 5 princípios básicos da programação e projeto orientado à objetos.
 
 - S: Single Responsibility Principle
 - O: Open/Closed Principle
@@ -1351,7 +1351,7 @@ class Employee
 
 ## S: Princípio da Responsabilidade Uníca
 
-Como o declarado no Clean Code, "nunca deve haver mais de um motivo para uma classe mudar". É tentador atrolhar uma classe de funcionalidades, como quando vamos viajar levando apenas uma mala. O problema é que a classe não será coesa conceitualmente e ela lhe dará vários motivos para mudanças. Minimizar o tempo que se leva para modificar uma classe é importante.
+Como o declarado no Clean Code, "nunca deve haver mais de um motivo para uma classe mudar". É tentador entulhar uma classe de funcionalidades, como quando vamos viajar levando apenas uma mala. O problema é que a classe não será coesa conceitualmente e ela lhe dará vários motivos para mudanças. Minimizar o tempo que se leva para modificar uma classe é importante.
 
 **Ruim**
 
@@ -1530,11 +1530,11 @@ class HttpRequester
 }
 ```
 
-## L: Princípio de Susbstituição de Liskov
+## L: Princípio de Substituição de Liskov
 
-Esse é um termo assustador para um conceito bem simples. Ele é definifdo formalmente por:
+Esse é um termo assustador para um conceito bem simples. Ele é definido formalmente por:
 
-*Se S é um subtipo de T, então osbjetos do tipo T podem ser substituídos por objetos do tipo S sem que isso altere qualquer propriedade desejável do programa (corretude, tarefa executada, etc.).*
+*Se S é um subtipo de T, então objetos do tipo T podem ser substituídos por objetos do tipo S sem que isso altere qualquer propriedade desejável do programa (corretude, tarefa executada, etc.).*
 
 A definição é mais assustadora ainda.
 
@@ -1673,7 +1673,7 @@ RenderLargeRectangles(shapes);
 O princípio da separação em interfaces declara que:
 > Clientes não devem ser forçados a depender de uma interface que eles não usam.
 
-Um bom exemplo de que demonstra esse princípio é para classes que necessitam uma quantidade grande de ojetos de configuração. É benéfico que o cliente não precise configurar um monte de opções, pois na maioria das vezes não são necessárias todas as configurações. Fazer com que elas sejam opcionais previne ter uma interface muito grande.
+Um bom exemplo de que demonstra esse princípio é para classes que necessitam uma quantidade grande de objetos de configuração. É benéfico que o cliente não precise configurar um monte de opções, pois na maioria das vezes não são necessárias todas as configurações. Fazer com que elas sejam opcionais previne ter uma interface muito grande.
 
 **Ruim**
 
@@ -1757,7 +1757,7 @@ public class Robot : IWorkable
 
 Esse princípio declara duas coisas essenciais:
 
-1. Módulos de alto nível não devem depender de modulos de baixo nível.
+1. Módulos de alto nível não devem depender de módulos de baixo nível.
 1. Abstrações não devem depender de detalhes. Detalhes devem depender de abstrações.
 
 A princípio, pode parecer difícil de entender, mas se você já trabalhou com .NET/.NET Core, você já viu a implementação desse princípio na forma de Injeção de Dependência. Embora não sejam conceitos idênticos, a Inversão de Dependência evita que módulos de alto nível saibam detalhes de módulos de baixo nível ou de como configurá-los e isso pode ser alcançado com Injeção de Dependência. Além disso, conseguimos evitar o acoplamento de módulos, visto que alto acoplamento é um mal hábito de desenvolvimento porque dificulta a refatoração de código.
@@ -1855,7 +1855,7 @@ public class Manager
 
 Faça o seu melhor para evitar código duplicado. Código duplicado é ruim porque significa que existe mais de um lugar para alterar alguma coisa se você precisa modificar alguma lógica.
 
-Às vezes temos código duplicado porque precisamosfazer duas coisas ligeiramente diferentes mas que compartilham um monte em comum, mas as diferenças te forçam a ter duas ou mais funções separadas que fazem um monte da mesma coisa. Remover código duplicado significa criar uma abstração que possa lidar com essas diferenças com apenas uma função/classe/módulo.
+Às vezes temos código duplicado porque precisamos fazer duas coisas ligeiramente diferentes, mas que compartilham um monte em comum, mas as diferenças te forçam a ter duas ou mais funções separadas que fazem um monte da mesma coisa. Remover código duplicado significa criar uma abstração que possa lidar com essas diferenças com apenas uma função/classe/módulo.
 
 Acertar na abstração é crítico e, por isso, você deve seguir os conceitos do SOLID explicados na seção **Classes**. Má abstração pode levar a mais código duplicado.
 
@@ -1947,7 +1947,7 @@ Em termos de linguagens de programação, uma exceção é um desvio condicional
 
 ## Quando disparar exceção?
 
-Resposta: quando não for possível continuar a partir do ponto atual no código, seja porque um serviço não está disponível, uma falha na leitura de um arquivo, um parâmetro de entrada inválido ma função, etc. Pense no seguinte: a regra é que o método deve executar até o final com as informações que ele possui. Se ele não pode executar até o final, isso é uma exceção, afinal, você não pode enviar um e-mail sem o endereço do destinatário, por exemplo. Resumo: sempre que a função/método não for capaz de cumprir a sua tarefa, dispare uma exceção.
+Resposta: quando não for possível continuar a partir do ponto atual no código, seja porque um serviço não está disponível, uma falha na leitura de um arquivo, um parâmetro de entrada inválido na função, etc. Pense no seguinte: a regra é que o método deve executar até o final com as informações que ele possui. Se ele não pode executar até o final, isso é uma exceção, afinal, você não pode enviar um e-mail sem o endereço do destinatário, por exemplo. Resumo: sempre que a função/método não for capaz de cumprir a sua tarefa, dispare uma exceção.
 
 **Ruim**
 
@@ -2075,7 +2075,7 @@ catch (Exception error)
 
 ## Use múltiplos blocos `catch` em vez de condicionais `if`
 
-Se você precisa excutar uma ação de acordo com o tipo de exceção, use múltiplos blocos `catch`.
+Se você precisa executar uma ação de acordo com o tipo de exceção, use múltiplos blocos `catch`.
 
 **Ruim**
 
@@ -2115,7 +2115,7 @@ catch (TaskSchedulerException ex)
 }
 ```
 
-## Mantenha a pilha de exceções quando re-lançar uma exceção
+## Mantenha a pilha de exceções quando relançar uma exceção
 
 C# permite que uma exceção seja relançada usando a palavra chave `throw`. É uma má prática lançar uma exceção pega usando `throw ex;`, pois isso redefine a pilha de exceções. Em vez disso, use `throw`, dessa forma, mantendo a pilha de exceções. Uma alternativa é lançar uma `throw new CustomException( "alguma informação", ex);` e atribuir `ex` a propriedade `InnerException`. Fazer log de exceções é uma boa prática, porém o objetivo é fazer o log e depois utilizar `throw`.
 
@@ -2151,7 +2151,7 @@ catch (Exception error)
 
 ## Evite marcadores de posição
 
-Geralmente apenas adicionam poluição. Deixe com que os nomes de variáveis junto com a identação e formatação corretas mostrem a estrutura visual do seu código.
+Geralmente apenas adicionam poluição. Deixe com que os nomes de variáveis junto com a indentação e formatação corretas mostrem a estrutura visual do seu código.
 
 **Ruim**
 
