@@ -1936,13 +1936,401 @@ public List<EmployeeData> ShowList(Employee employees)
 }
 ```
 
-# Testes
 
-# Concorrência
 
 # Tratamento de erros
 
-# Formatação
+## Afinal, o que é exceção?
+
+Em termos de linguagens de programação, uma exceção é um desvio condicional, exatamente como `if/else,switch/case`, com o diferencial que ela carrega consigo a pilha de execução. No C#, quando uma exceção é disparada, o método atual é interrompido e a execução continua no ponto onde o método foi chamado. Se o ponto onde o método for chamado não estiver dentro de um bloco `try/catch`, então o método é interrompido e retorna para o ponto onde foi chamado, e assim sucessivamente até que seja encontrado um bloco `try/catch`. Se chegarmos no topo da árvore de chamadas e não houver tratamento de exceção, o programa é terminado.
+
+
+## Quando disparar exceção?
+
+Resposta: quando não for possível continuar a partir do ponto atual no código, seja porque um serviço não está disponível, uma falha na leitura de um arquivo, um parâmetro de entrada inválido ma função, etc. Pense no seguinte: a regra é que o método deve executar até o final com as informações que ele possui. Se ele não pode executar até o final, isso é uma exceção, afinal, você não pode enviar um e-mail sem o endereço do destinatário, por exemplo. Resumo: sempre que a função/método não for capaz de cumprir a sua tarefa, dispare uma exceção.
+
+**Ruim**
+
+```cs
+Person UpdatePersonEmail(int personId, string emailAddress){    
+    Person p = db.person.find(personId);
+
+    if(p == null){
+        return null;
+    }
+
+    p.email = emailAdress;
+    db.person.Update(p);
+
+    return p;
+}
+
+pessoa = UpdatePersonEmail(-1,"michel.ramos@deliverit.com.br");
+//agora pessoa é null
+```
+
+**Bom**
+
+```cs
+Person UpdatePersonEmail( int personId, string emailAddress) {    
+    Person p = db.person.find(personId);
+
+    if( p == null ) {
+        throw new Exception("Pessoa não encontrada.");
+    }
+
+    p.email = emailAdress;
+    db.person.Update(p);
+
+    return p;
+}
+
+try 
+{
+    pessoa = UpdatePersonEmail(-1,"michel.ramos@deliverit.com.br");
+} catch (Exception ex) {
+    //executar limpeza e sair do método
+}
+
+```
+
+## Não use `throw ex` no bloco `catch`
+
+Se você precisar disparar a mesma exceção, apena use `throw`. Dessa forma a pilha de execução será preservada, caso contrário, será perdida.
+
+**Ruim**
+
+```cs
+try
+{
+    // Faça alguma coisa...
+}
+catch (Exception ex)
+{
+    // Qualquer ação, como desfazer alterações, fazer log.
+    throw ex;
+}
+```
+
+**Pior**
+
+```cs
+try
+{
+    // Faça alguma coisa...
+}
+catch (Exception ex)
+{
+    // Qualquer ação, como desfazer alterações, fazer log.
+    throw new Exception(ex.Message);
+}
+```
+
+**Bom**
+
+```cs
+try
+{
+    // Faça alguma coisa...
+}
+catch (Exception ex)
+{
+   // Qualquer ação, como desfazer alterações, fazer log.
+    throw;
+}
+```
+
+## Não ignore erros pegos
+
+Fazer nada com um erro pego não lhe dá a habilidade de corrigir ou reagir a um erro. Relançar uma exceção não é muito melhor do que isso, pois pode se perder em meio a uma enxurrada de mensagens no console. Se você coloca um código dentro do `try/catch`, isso significa que você acha que uma exceção pode ser disparada e você deve ter um plano ou um caminho alternativo no código para isso.
+
+**Ruim**
+
+```cs
+try
+{
+    FunctionThatMightThrow();
+}
+catch (Exception ex)
+{
+    // silent exception
+}
+```
+
+**Bom**
+
+```cs
+try
+{
+    FunctionThatMightThrow();
+}
+catch (Exception error)
+{
+    NotifyUserOfError(error);
+
+    // Outra opção
+    ReportErrorToService(error);
+}
+```
+
+## Use múltiplos blocos `catch` em vez de condicionais `if`
+
+Se você precisa excutar uma ação de acordo com o tipo de exceção, use múltiplos blocos `catch`.
+
+**Ruim**
+
+```cs
+try
+{
+    // Faça algo...
+}
+catch (Exception ex)
+{
+
+    if (ex is TaskCanceledException)
+    {
+        // Faça uma ação para TaskCanceledException
+    }
+    else if (ex is TaskSchedulerException)
+    {
+        // Faça uma ação para TaskSchedulerException
+    }
+}
+```
+
+**Bom**
+
+```cs
+try
+{
+    // Faça algo
+}
+catch (TaskCanceledException ex)
+{
+    // Faça uma ação para TaskCanceledException
+}
+catch (TaskSchedulerException ex)
+{
+    // Faça uma ação para TaskSchedulerException
+}
+```
+
+## Mantenha a pilha de exceções quando re-lançar uma exceção
+
+C# permite que uma exceção seja relançada usando a palavra chave `throw`. É uma má prática lançar uma exceção pega usando `throw ex;`, pois isso redefine a pilha de exceções. Em vez disso, use `throw`, dessa forma, mantendo a pilha de exceções. Uma alternativa é lançar uma `throw new CustomException( "alguma informação", ex);` e atribuir `ex` a propriedade `InnerException`. Fazer log de exceções é uma boa prática, porém o objetivo é fazer o log e depois utilizar `throw`.
+
+**Ruim**
+
+```cs
+try
+{
+    FunctionThatMightThrow();
+}
+catch (Exception ex)
+{
+    logger.LogInfo(ex);
+    throw ex;
+}
+```
+
+**Bom**
+
+```cs
+try
+{
+    FunctionThatMightThrow();
+}
+catch (Exception error)
+{
+    logger.LogInfo(error);
+    throw;
+}
+```
 
 # Comentários
 
+## Evite marcadores de posição
+
+Geralmente apenas adicionam poluição. Deixe com que os nomes de variáveis junto com a identação e formatação corretas mostrem a estrutura visual do seu código.
+
+**Ruim**
+
+```cs
+////////////////////////////////////////////////////////////////////////////////
+// Scope Model Instantiation
+////////////////////////////////////////////////////////////////////////////////
+var model = new[]
+{
+    menu: 'foo',
+    nav: 'bar'
+};
+
+////////////////////////////////////////////////////////////////////////////////
+// Action setup
+////////////////////////////////////////////////////////////////////////////////
+void Actions()
+{
+    // ...
+};
+```
+
+**Ruim**
+
+```cs
+#region Scope Model Instantiation
+
+var model = {
+    menu: 'foo',
+    nav: 'bar'
+};
+
+#endregion
+
+#region Action setup
+
+void Actions() {
+    // ...
+};
+
+#endregion
+```
+
+**Bom**
+
+```cs
+var model = new[]
+{
+    menu: 'foo',
+    nav: 'bar'
+};
+
+void Actions()
+{
+    // ...
+};
+```
+
+## Não deixe código comentado no fonte
+
+Controle de versão existe por um motivo. Deixe código velho no histórico.
+
+**Ruim**
+
+```cs
+doStuff();
+// doOtherStuff();
+// doSomeMoreStuff();
+// doSoMuchStuff();
+```
+
+**Bom**
+
+```cs
+doStuff();
+```
+
+## Não faça comentários de histórico
+
+Lembre-se, controle de versão. Não há necessidade para código morto e, especialmente, comentários de histórico. Use o `git log` para isso.
+
+**Ruim**
+
+```cs
+/**
+ * 2018-12-20: Removido mônadas, pois não entendo (RM)
+ * 2017-10-01: Melhorado usando mônadas especiais (JP)
+ * 2016-02-03: Removido verificação de tipo (LI)
+ * 2015-03-14: Adicionado Combine com verificação de tipo (JR)
+ */
+public int Combine(int a,int b)
+{
+    return a + b;
+}
+```
+
+**Bom**
+
+```cs
+public int Combine(int a,int b)
+{
+    return a + b;
+}
+```
+
+## Comente coisas que possuem regras de negócio complexas
+
+Comentários são pedidos de desculpas, não um requisito. Um código bom praticamente se auto documenta.
+
+**Ruim**
+
+```cs
+public int HashIt(string data)
+{
+    // The hash
+    var hash = 0;
+
+    // Length of string
+    var length = data.length;
+
+    // Loop through every character in data
+    for (var i = 0; i < length; i++)
+    {
+        // Get character code.
+        const char = data.charCodeAt(i);
+        // Make the hash
+        hash = ((hash << 5) - hash) + char;
+        // Convert to 32-bit integer
+        hash &= hash;
+    }
+}
+```
+
+**Melhor, mas ainda ruim**
+
+```cs
+public int HashIt(string data)
+{
+    var hash = 0;
+    var length = data.length;
+    for (var i = 0; i < length; i++)
+    {
+        const char = data.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+
+        // Convert to 32-bit integer
+        hash &= hash;
+    }
+}
+```
+
+Se o comentário explica O QUÊ o código está fazendo, provavelmente é um comentário desnecessário e pode ser realizado com uma boa nomenclatura de variáveis. Por outro lado, seria difícil expressar porque o desenvolvedor escolheu `djb2` em vez de `sha-1` ou outra função hash. Nesse caso, um comentário é aceitável.
+
+**Bom**
+
+```cs
+public int Hash(string data)
+{
+    var hash = 0;
+    var length = data.length;
+
+    for (var i = 0; i < length; i++)
+    {
+        var character = data[i];
+        // use of djb2 hash algorithm as it has a good compromise
+        // between speed and low collision with a very simple implementation
+        hash = ((hash << 5) - hash) + character;
+
+        hash = ConvertTo32BitInt(hash);
+    }
+    return hash;
+}
+
+private int ConvertTo32BitInt(int value)
+{
+    return value & value;
+}
+```
+
+# Removidos
+
+Testes, Concorrência, Formatação
