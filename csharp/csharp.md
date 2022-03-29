@@ -14,7 +14,7 @@ Adaptado de experiências pessoais e das seguintes fontes:
 
 > "A única métrica válida para qualidade de código é: wtf/minuto" - (Autor desconhecido)
 
-Esse documento contém **princípios de engenharia de software** retirados do livro Clean Code (Robert C. Martin), adaptados para .NET/.NET Core.
+Esse documento contém **princípios de engenharia de software** retirados do livro [Clean Code de Robert C. Martin](#1--martin-r-c-2019-código-limpo-habilidades-práticas-do-agile-software-brasil-alta-books), adaptados para .NET/.NET Core.
 
 Nem todos os princípios devem ser estritamente seguidos. Além disso, poucos desses princípios são universalmente aceitos. Esses princípios são nada mais além de guias, mas foram criados e aprimorados coletivamente através de anos de prática e experiência pelos autores do livro.
 
@@ -2495,6 +2495,6 @@ select column1, column2..., columnN from Person p where p.id = @id;
 select column1, column2..., columnN from Person p where p.id in ( @idList );
 ```
 
-# Removidos
+# Referências
 
-Testes, Concorrência, Formatação
+1. #### Martin, R. C. (2019). Código Limpo: Habilidades Práticas do Agile Software. Brasil: Alta Books.
