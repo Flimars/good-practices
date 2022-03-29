@@ -1,12 +1,46 @@
 # Conceitos de Clean Code adaptados para .NET/.NET Core
 
-A única métrica válida para qualidade de código é: wtf/minuto
+Escrito em: 29/03/2022
 
-[imagem]
+Autor: Michel Vaz Ramos
 
-Princípios de engenharia de software retirados do livro Clean Code (Robert C. Martin), adaptados para .NET/.NET Core.
+Adaptado de experiências pessoais e das seguintes fontes:
 
-Nem todos os princípios devem ser estritamente seguidos. Além disso, poucos desses princípios são universalmente aceitos. Esses princípios nada mais além de guias, mas foram criados e aprimorados coletivamente através de anos de prática e experiência pelos autores do livro.
+- [Clean Code .NET](https://github.com/thangchung/clean-code-dotnet#introduction)
+- [C# Coding Guidelines](https://csharpcodingguidelines.com/)
+
+
+# Introdução
+
+> "A única métrica válida para qualidade de código é: wtf/minuto" - (Autor desconhecido)
+
+Esse documento contém **princípios de engenharia de software** retirados do livro Clean Code (Robert C. Martin), adaptados para .NET/.NET Core.
+
+Nem todos os princípios devem ser estritamente seguidos. Além disso, poucos desses princípios são universalmente aceitos. Esses princípios são nada mais além de guias, mas foram criados e aprimorados coletivamente através de anos de prática e experiência pelos autores do livro.
+
+# Por que usar esse guia se ele limita minha criatividade?
+
+Você deve usar esse guia porque nem todo desenvolvedor:
+
+* está ciente de que se lê código 10x mais do que se escreve código.
+* está ciente das potenciais armadilhas de certas construções em C#.
+* está atualizado sobre certas convensões do .NET Framework, tais como: `IDisposable, async / await` ou a natureza da execução adiada do LINQ.
+* está ciente do impacto de usar (ou não usar) soluções específicas em aspectos como segurança, performance, suporte a multi-linguagem, etc.
+* percebe que nem todo desenvolvedor é capaz, habilidoso ou experiente para entender soluções elegantes mas potencialmente muito abstratas.
+
+Este guia está subdividido nos tópicos a seguir:
+
+1. [Nomes](#nomes)
+1. [Variáveis](#variáveis)
+1. [Funções](#funções)
+1. [Objetos e Estruturas de Dados](#objetos-e-estrutura-de-dados)
+1. [Classes](#classes)
+1. [SOLID](#solid)
+1. [Tratamento de Exceções](#tratamento-de-erros)
+1. [Comentários](#comentários)
+1. [Desempenho](#desempenho)
+
+Espero que esse guia seja útil para quem está lendo tanto quanto foi útil para mim enquanto eu escrevia este documento.
 
 # Nomes
 
