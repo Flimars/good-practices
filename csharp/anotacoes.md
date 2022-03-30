@@ -48,6 +48,7 @@ public class Classe
 - Include the most critical coding guidelines on your Project Checklist and verify the remainder as part of your Peer Review.
 
 # Referências
-- https://github.com/thangchung/clean-code-dotnet#concurrency
-- https://csharpcodingguidelines.com/
+1. https://github.com/thangchung/clean-code-dotnet#concurrency
+1. https://csharpcodingguidelines.com/
+1. https://martinfowler.com/bliki/CommandQuerySeparation.html
 

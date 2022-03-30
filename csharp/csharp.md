@@ -14,9 +14,13 @@ Adaptado de experiências pessoais e das seguintes fontes:
 
 > "A única métrica válida para qualidade de código é: wtf/minuto" - (Autor desconhecido)
 
-Esse documento contém **princípios de engenharia de software** retirados do livro [Clean Code de Robert C. Martin](#1--martin-r-c-2019-código-limpo-habilidades-práticas-do-agile-software-brasil-alta-books), adaptados para .NET/.NET Core.
+Esse documento contém **princípios de engenharia de software** retirados do livro [Clean Code de Robert C. Martin](#1-martin-r-c-2019-código-limpo-habilidades-práticas-do-agile-software-brasil-alta-books), adaptados para .NET/.NET Core.
 
-Nem todos os princípios devem ser estritamente seguidos. Além disso, poucos desses princípios são universalmente aceitos. Esses princípios são nada mais além de guias, mas foram criados e aprimorados coletivamente através de anos de prática e experiência pelos autores do livro.
+**Esteja ciente que:**
+
+1. Nem todos os princípios devem ser estritamente seguidos.
+1. Poucos desses princípios são universalmente aceitos.
+1. Esses princípios são nada mais além de guias, porém, foram **criados e aprimorados coletivamente através de anos de prática e experiência** pelos autores do livro.
 
 # Por que usar esse guia se ele limita minha criatividade?
 
@@ -26,7 +30,7 @@ Você deve usar esse guia porque nem todo desenvolvedor:
 * está ciente das potenciais armadilhas de certas construções em C#.
 * está atualizado sobre certas convensões do .NET Framework, tais como: `IDisposable, async / await` ou a natureza da execução adiada do LINQ.
 * está ciente do impacto de usar (ou não usar) soluções específicas em aspectos como segurança, performance, suporte a multi-linguagem, etc.
-* percebe que nem todo desenvolvedor é capaz, habilidoso ou experiente para entender soluções elegantes mas potencialmente muito abstratas.
+* percebe que nem todo desenvolvedor é capacitado, habilidoso ou experiente para entender soluções elegantes, porém, potencialmente muito abstratas.
 
 Este guia está subdividido nos tópicos a seguir:
 
@@ -51,17 +55,17 @@ Um bom nome permite que o código seja utilizado por muitos desenvolvedores. O n
 **Ruim**
 
 ```cs
-int d;
+int d = GetDaysSinceModified();
 ```
 
 **Bom**
 ```cs
-int daySinceModified;
+int daySinceModified = GetDaysSinceModified();
 ```
 
 ## Evite nomes que enganam
 
-O nome de uma variável deve refletir para o que ela é usada.
+O nome de uma variável deve refletir para que ela é usada.
 
 **Ruim**
 
@@ -77,7 +81,7 @@ var listOfEmployee = _employeeService.GetEmployees().ToList();
 
 ## Evite notação Hungarian (Hungarian Notation)
 
-A notação Hungarian afirma o tipo de variável no nome. É desnecessário em IDE's modernas, pois elas identificam o tipo.
+A notação Hungarian expressa o tipo da variável no nome. É desnecessário em IDE's modernas, pois elas identificam o tipo.
 
 **Ruim**
 
@@ -102,7 +106,7 @@ Notação hungarian também não deve ser usada em parâmetros:
 ```cs
 public bool IsShopOpen(string pDay, int pAmount)
 {
-    // some logic
+    // ...
 }
 ```
 **Bom**
@@ -110,7 +114,7 @@ public bool IsShopOpen(string pDay, int pAmount)
 ```cs
 public bool IsShopOpen(string day, int amount)
 {
-    // some logic
+    // ...
 }
 ```
 
@@ -124,8 +128,8 @@ A capitalização fala bastante sobre suas variáveis, funções, etc. Essas reg
 const int DAYS_IN_WEEK = 7;
 const int daysInMonth = 30;
 
-var songs = new List<string> { 'Back In Black', 'Stairway to Heaven', 'Hey Jude' };
-var Artists = new List<string> { 'ACDC', 'Led Zeppelin', 'The Beatles' };
+var songs = new List<string> { 'Back In Black', 'Stairway to Heaven', 'Paradise City' };
+var Artists = new List<string> { 'ACDC', 'Led Zeppelin', 'Guns and Roses' };
 
 bool EraseDatabase() {}
 bool Restore_database() {}
@@ -140,8 +144,8 @@ class Alpaca {}
 const int DaysInWeek = 7;
 const int DaysInMonth = 30;
 
-var songs = new List<string> { 'Back In Black', 'Stairway to Heaven', 'Hey Jude' };
-var artists = new List<string> { 'ACDC', 'Led Zeppelin', 'The Beatles' };
+var songs = new List<string> { 'Back In Black', 'Stairway to Heaven', 'Paradise City' };
+var artists = new List<string> { 'ACDC', 'Led Zeppelin', 'Guns and Roses' };
 
 bool EraseDatabase() {}
 bool RestoreDatabase() {}
@@ -159,8 +163,8 @@ Demora um bom tempo para descobrir o significado de variáveis e funções quand
 ```cs
 public class Employee
 {
-    public Datetime sWorkDate { get; set; } // what the heck is this
-    public Datetime modTime { get; set; } // same here
+    public Datetime sWorkDate { get; set; } // O que é isso?
+    public Datetime modTime { get; set; } // E isso?
 }
 ```
 
@@ -185,7 +189,7 @@ var employeephone;
 
 public double CalculateSalary(int workingdays, int workinghours)
 {
-    // some logic
+    // ...
 }
 ```
 
@@ -196,7 +200,7 @@ var employeePhone;
 
 public double CalculateSalary(int workingDays, int workingHours)
 {
-    // some logic
+    // ...
 }
 ```
 
@@ -272,7 +276,7 @@ for (var i = 0; i < l.Count(); i++)
     // ...
     // ...
     // ...
-    // Wait, what is `li` for again?
+    // Espera, o que é mesmo 'li'???
     Dispatch(li);
 }
 ```
@@ -296,14 +300,14 @@ foreach (var location in locations)
 
 ## Evite a string mágica
 
-Strings mágicas são valores string que são especificados diretamente no código de aplicação e tem impacto no comportamento da aplicação. Frequentemente tais strings serão duplicadas no sistema. Como elas não podem ser automaticamente atualizadas no sistema usando ferramentas, elas se tornam fonte de bugs quando são feitas modificações em algumas strings mas não em outras.
+Strings mágicas são valores string que são especificados diretamente no código e tem impacto no comportamento da aplicação. Frequentemente tais strings serão duplicadas no sistema. Como elas não podem ser automaticamente atualizadas usando ferramentas, elas se tornam fonte de bugs quando são feitas modificações em algumas strings mas não em outras.
 
 **Ruim**
 
 ```cs
 if (userRole == "Admin")
 {
-    // logic in here
+    // ...
 }
 ```
 
@@ -314,7 +318,7 @@ const string ADMIN_ROLE = "Admin"
 
 if (userRole == ADMIN_ROLE)
 {
-    // logic in here
+    // ...
 }
 ```
 
@@ -430,10 +434,10 @@ var data = new {
     PersonAccess = 4
     };
 
-// What the heck is 4 for?
+// Para que serve o 4?
 if (data.PersonAccess == 4)
 {
-    // do edit ...
+    // editar ...
 }
 ```
 
@@ -457,11 +461,11 @@ var person = new Person
 
 if (person.PersonAccess == PersonAccess.ACCESS_UPDATE)
 {
-    // do edit ...
+    // editar ...
 }
 ```
 
-## User argumentos padrão em vez de lógica
+## Use argumentos padrão em vez de lógica
 
 **Ruim**
 
@@ -486,11 +490,11 @@ public void CreateMicrobrewery(string breweryName = "Hipster Brew Co.")
 
 ## Evite efeitos colaterais
 
-Uma função tem efeitos colaterais se ela faz alguma coisa além de receber um valor (ou valores) e retornar um valor (ou valores), por exemplo, acidentalmente: modificar uma variável global, escrever em um arquivo, entregar todo o teu dinheiro para um estranho.
+Uma função tem efeitos colaterais se ela faz alguma coisa além de receber um valor (ou valores) e retornar um valor (ou valores). Por exemplo, elas podem acidentalmente: modificar uma variável global, escrever em um arquivo, entregar todo o teu dinheiro para um estranho.
 
 Ocasionalmente é necessário ter efeitos colaterais: você pode precisar escrever em um arquivo. O que você precisa fazer é centralizar onde você está fazendo este trabalho. Não tenha várias funções e classes escrevendo em um arquivo. Tenha um serviço que faça isso, e **somente um**.
 
-O objeto é evitar problemas comuns, como compartilhar estado entre objetos sem estrutura, usar dados mutáveis que pode ser escritos por qualquer classe/método e não centralizar o local onde os efeitos colaterais podem ocorrer.
+O objetivo é evitar problemas comuns, como compartilhar estado entre objetos sem estrutura, usar dados mutáveis que pode ser escritos por qualquer classe/método e não centralizar o local onde os efeitos colaterais podem ocorrer.
 
 **Ruim**
 
@@ -531,12 +535,12 @@ Console.WriteLine(fullName); //  Primeiro nome é Ryan, e sobrenome é McDermott
 **Ruim**
 
 ```cs
-public bool IsDOMNodeNotPresent(string node)
+public bool IsNodeNotPresent(string node)
 {
     // ...
 }
 
-if (!IsDOMNodeNotPresent(node))
+if (!IsNodeNotPresent(node))
 {
     // ...
 }
@@ -545,12 +549,12 @@ if (!IsDOMNodeNotPresent(node))
 **Bom**
 
 ```cs
-public bool IsDOMNodePresent(string node)
+public bool IsNodePresent(string node)
 {
     // ...
 }
 
-if (IsDOMNodePresent(node))
+if (IsNodePresent(node))
 {
     // ...
 }
@@ -560,13 +564,13 @@ if (IsDOMNodePresent(node))
 
 Essa parece ser uma tarefa impossível. A primeira vez que se ouve isso, geralmente o programador diz:
 
-> "como vou programar qualquer coisa se usar `if`?"
+> "como vou programar qualquer coisa sem usar `if`?"
 
 A resposta é: você pode usar polimorfismo para obter o mesmo resultado em muitas tarefas. A segunda frase do desenvolvedor é:
 
 > Legal, mas por que eu iria querer fazer isso?
 
-A resposta é um conceito já visto sobre Clean Code: uma função deve fazer uma coisa, e somente uma. Quando tuas classes e funções contém declarações `if`, você está dizendo a quem usa que sua função faz mais de uma coisa.
+A resposta é um conceito já visto sobre Clean Code: uma função deve fazer uma coisa, e somente uma. Quando classes e funções contém declarações `if`, você está dizendo a quem usa que sua função faz mais de uma coisa.
 
 **Ruim**
 
@@ -596,14 +600,12 @@ class Airplane
 interface IAirplane
 {
     // ...
-
     double GetCruisingAltitude();
 }
 
 class Boeing777 : IAirplane
 {
     // ...
-
     public double GetCruisingAltitude()
     {
         return GetMaxAltitude() - GetPassengerCount();
@@ -613,7 +615,6 @@ class Boeing777 : IAirplane
 class AirForceOne : IAirplane
 {
     // ...
-
     public double GetCruisingAltitude()
     {
         return GetMaxAltitude();
@@ -623,7 +624,6 @@ class AirForceOne : IAirplane
 class Cessna : IAirplane
 {
     // ...
-
     public double GetCruisingAltitude()
     {
         return GetMaxAltitude() - GetFuelExpenditure();
@@ -683,7 +683,7 @@ public int Combine(dynamic val1, dynamic val2)
     int value;
     if (!int.TryParse(val1, out value) || !int.TryParse(val2, out value))
     {
-        throw new Exception('Must be of type Number');
+        throw new Exception('Deve ser um tipo numérico');
     }
 
     return val1 + val2;
@@ -735,7 +735,7 @@ public void CreateTempFile(string name)
 
 ## Não escreva funções globais
 
-Sobrecarregar e poluir globais é uma má prática em muitas linguagens. Pode haver conflitos com outras bibliotecas e o usuário do código não estaria ciente até ele ter uma exceção em produção. Pense no seguinte: você escreve uma função global `Config()`, mas ela pode conflitar com outra biblioteca que tentar fazer a mesma coisa.
+Sobrecarregar e poluir globais é uma má prática em muitas linguagens. Pode haver conflitos com outras bibliotecas e o usuário do código não estaria ciente até ter uma exceção em produção. Pense no seguinte: você escreve uma função global `Config()`, mas ela pode conflitar com outra biblioteca que tentar fazer a mesma coisa.
 
 **Ruim**
 
@@ -825,7 +825,7 @@ var options = <resolve from IOC>;
 var connection = new DBConnection(options);
 ```
 
-E agora você deve ter uma instância de `DBConnection` na tua aplicação.
+E agora você deve ter uma instância de `DBConnection` na aplicação.
 
 ## Argumentos de função (2 ou menos, idealmente)
 
@@ -893,7 +893,7 @@ public void SendEmailToListOfClients(string[] clients)
 public void SendEmailToListOfClients(string[] clients)
 {
     var activeClients = GetActiveClients(clients);
-    // Do some logic
+    // ...
 }
 
 public List<Client> GetActiveClients(string[] clients)
@@ -909,8 +909,7 @@ public List<Client> GetActiveClients(string[] clients)
 ```cs
 public class Email
 {
-    //...
-
+    // ...
     public void Handle()
     {
         SendMail(this._to, this._subject, this._body);
@@ -918,7 +917,7 @@ public class Email
 }
 
 var message = new Email(...);
-// What is this? A handle for the message? Are we writing to a file now?
+// O que é isso? Uma handle para a message? Estamos salvando em um arquivo?
 message.Handle();
 ```
 
@@ -936,15 +935,11 @@ public class Email
 }
 
 var message = new Email(...);
-// Clear and obvious
+// Claro e óbvio
 message.Send();
 ```
 
-## Funções deve ter somente um nível de abstração
-
-Excluído
-
-## O chamador da função e chamados da função devem ser próximos
+## O chamador da função e chamados pela função devem ser próximos
 
 Se uma função chama outra, mantenha essas funções verticalmente próximas no código-fonte, de preferência a função chamada abaixo da função chamadora. Faça seu código ser lido como um jornal (de cima para baixo).
 
@@ -1106,7 +1101,7 @@ InventoryTracker("apples", request, "www.inventory-awesome.io");
 
 ## Use getters e setters
 
-Em C# usar as palavras chave `public`, `protected` e `private` em métodos. Assim, você pode controlar a modificação de propriedades de um objeto.
+Em C# use as palavras chave `public`, `protected` e `private` em métodos. Assim, você pode controlar a modificação de propriedades de um objeto.
 
 Vantagens:
 
@@ -1132,7 +1127,7 @@ class BankAccount
 
 var bankAccount = new BankAccount();
 
-// Fake buy shoes...
+// Falso comprar tênis...
 bankAccount.Balance -= 100;
 ```
 
@@ -1172,10 +1167,10 @@ class BankAccount
 
 var bankAccount = new BankAccount();
 
-// Buy shoes...
+// Comprar tênis...
 bankAccount.WithdrawBalance(price);
 
-// Get balance
+// Obter saldo
 balance = bankAccount.Balance;
 ```
 
@@ -1195,7 +1190,7 @@ class Employee
 }
 
 var employee = new Employee("John Doe");
-Console.WriteLine(employee.Name); // Employee name: John Doe
+Console.WriteLine(employee.Name); // Nome do funcionário: John Doe
 ```
 
 **Bom**
@@ -1212,7 +1207,7 @@ class Employee
 }
 
 var employee = new Employee("John Doe");
-Console.WriteLine(employee.Name); // Employee name: John Doe
+Console.WriteLine(employee.Name); // Nome do funcionário: John Doe
 ```
 
 # Classes
@@ -1289,9 +1284,9 @@ internal static void ListFluentExtensions()
 
 ## Prefira composição em vez de herança
 
-Conforme dito no famoso livro _Design Patterns_ escrito pela Gang of Four, você deve preferir composição em vez de herança onde for possível. Existem várias boas razões para usar herança e várias boas razões para usar composição.
+Conforme dito no famoso livro _Design Patterns_ escrito pela Gang of Four, onde for possível você deve preferir composição em vez de herança. Existem boas razões para usar herança e boas razões para usar composição.
 
-O ponto principal desta máxima é que quando a sua cabeça vai instintivamente para herança, pense duas vezes e analise se composição faria a modelagem do seu problema melhor. Às vezes, é possível.
+O ponto principal desta máxima é que quando instintivamente você escolhe herança, pense duas vezes e analise se composição faria a modelagem do seu problema melhor. Às vezes, é possível.
 
 Abaixo uma lista simples e não exaustiva  de **SUGESTÕES** de quando se deve usar herança:
 
@@ -1316,8 +1311,8 @@ class Employee
     // ...
 }
 
-// Bad because Employees "have" tax data.
-// EmployeeTaxData is not a type of Employee
+// Ruim, pois empregado "possui" dados de imposto.
+// EmployeeTaxData não é um tipo de empregado.
 
 class EmployeeTaxData : Employee
 {
@@ -1328,7 +1323,6 @@ class EmployeeTaxData : Employee
     {
          // ...
     }
-
     // ...
 }
 ```
@@ -1346,7 +1340,6 @@ class EmployeeTaxData
         Ssn = ssn;
         Salary = salary;
     }
-
     // ...
 }
 
@@ -1366,7 +1359,6 @@ class Employee
     {
         TaxData = new EmployeeTaxData(ssn, salary);
     }
-
     // ...
 }
 ```
@@ -1456,7 +1448,7 @@ class UserSettings
 ## O: Princípio Aberto/Fechado
 
 Conforme declarado por Bertrand Meyer:
-> software entities (classes, módulos, funções, etc.) devem ser abertas para extensão, mas fechadas para modificação.
+> Entidades de software (classes, módulos, funções, etc.) devem ser abertas para extensão, mas fechadas para modificação.
 
 Mas o que isso significa? Basicamente, esse princípio diz que você deve permitir que os usuários (do código) adicionem funcionalidades sem modificar o código existente.
 
@@ -1514,12 +1506,12 @@ class HttpRequester : AdapterBase
 
     private bool MakeAjaxCall(string url)
     {
-        // request and return promise
+        // solicita e retorna uma promise
     }
 
     private bool MakeHttpCall(string url)
     {
-        // request and return promise
+        // solicita e retorna uma promise
     }
 }
 ```
@@ -1536,7 +1528,7 @@ class AjaxAdapter : IAdapter
 {
     public bool Request(string url)
     {
-        // request and return promise
+        // solicita e retorna uma promise
     }
 }
 
@@ -1544,7 +1536,7 @@ class NodeAdapter : IAdapter
 {
     public bool Request(string url)
     {
-        // request and return promise
+        // solicita e retorna uma promise
     }
 }
 
@@ -1722,12 +1714,12 @@ public class Human : IEmployee
 {
     public void Work()
     {
-        // ....working
+        // trabalhando...
     }
 
     public void Eat()
     {
-        // ...... eating in lunch break
+        // comendo no intervalo...
     }
 }
 
@@ -1735,12 +1727,12 @@ public class Robot : IEmployee
 {
     public void Work()
     {
-        //.... working much more
+        //trabalhando muito mais
     }
 
     public void Eat()
     {
-        //.... robot can't eat, but it must implement this method
+        //Robôs não comem, mas sou obrigado a implementar este método
     }
 }
 ```
@@ -1768,21 +1760,21 @@ public class Human : IEmployee
 {
     public void Work()
     {
-        // ....working
+        // trabalhando...
     }
 
     public void Eat()
     {
-        //.... eating in lunch break
+        //Comendo no intervalo
     }
 }
 
-// robot can only work
+// robôs somente trabalham
 public class Robot : IWorkable
 {
     public void Work()
     {
-        // ....working
+        //trabalhando...
     }
 }
 ```
@@ -1794,7 +1786,7 @@ Esse princípio declara duas coisas essenciais:
 1. Módulos de alto nível não devem depender de módulos de baixo nível.
 1. Abstrações não devem depender de detalhes. Detalhes devem depender de abstrações.
 
-A princípio, pode parecer difícil de entender, mas se você já trabalhou com .NET/.NET Core, você já viu a implementação desse princípio na forma de Injeção de Dependência. Embora não sejam conceitos idênticos, a Inversão de Dependência evita que módulos de alto nível saibam detalhes de módulos de baixo nível ou de como configurá-los e isso pode ser alcançado com Injeção de Dependência. Além disso, conseguimos evitar o acoplamento de módulos, visto que alto acoplamento é um mal hábito de desenvolvimento porque dificulta a refatoração de código.
+A princípio, pode parecer difícil de entender, mas se você já trabalhou com .NET/.NET Core, você já viu a implementação desse princípio na forma de Injeção de Dependência. Embora não sejam conceitos idênticos, a Inversão de Dependência evita que módulos de alto nível saibam detalhes de módulos de baixo nível ou de como configurá-los e isso pode ser alcançado com Injeção de Dependência. Além disso, conseguimos evitar o acoplamento de módulos, visto que alto acoplamento é um mau hábito de desenvolvimento porque dificulta a refatoração de código.
 
 **Ruim**
 
@@ -1803,7 +1795,7 @@ public abstract class EmployeeBase
 {
     protected virtual void Work()
     {
-        // ....working
+        // trabalhando...
     }
 }
 
@@ -1811,7 +1803,7 @@ public class Human : EmployeeBase
 {
     public override void Work()
     {
-        //.... working much more
+        //trabalhando mais...
     }
 }
 
@@ -1819,7 +1811,7 @@ public class Robot : EmployeeBase
 {
     public override void Work()
     {
-        //.... working much, much more
+        //trabalhando muito mais...
     }
 }
 
@@ -1854,7 +1846,7 @@ public class Human : IEmployee
 {
     public void Work()
     {
-        // ....working
+        // trabalhando...
     }
 }
 
@@ -1862,7 +1854,7 @@ public class Robot : IEmployee
 {
     public void Work()
     {
-        //.... working much more
+        //trabalhando mais...
     }
 }
 
@@ -1987,19 +1979,19 @@ Resposta: quando não for possível continuar a partir do ponto atual no código
 
 ```cs
 Person UpdatePersonEmail(int personId, string emailAddress){    
-    Person p = db.person.find(personId);
+    Person person = db.person.find(personId);
 
-    if(p == null){
+    if(person == null){
         return null;
     }
 
-    p.email = emailAdress;
-    db.person.Update(p);
+    person.email = emailAdress;
+    db.person.Update(person);
 
-    return p;
+    return person;
 }
 
-pessoa = UpdatePersonEmail(-1,"michel.ramos@deliverit.com.br");
+person = UpdatePersonEmail(-1,"michel.ramos@deliverit.com.br");
 //agora pessoa é null
 ```
 
@@ -2007,23 +1999,24 @@ pessoa = UpdatePersonEmail(-1,"michel.ramos@deliverit.com.br");
 
 ```cs
 Person UpdatePersonEmail( int personId, string emailAddress) {    
-    Person p = db.person.find(personId);
+    Person person = db.person.find(personId);
 
-    if( p == null ) {
+    if( person == null ) {
         throw new Exception("Pessoa não encontrada.");
     }
 
-    p.email = emailAdress;
-    db.person.Update(p);
+    person.email = emailAdress;
+    db.person.Update(person);
 
-    return p;
+    return person;
 }
 
 try 
 {
-    pessoa = UpdatePersonEmail(-1,"michel.ramos@deliverit.com.br");
+    person = UpdatePersonEmail(-1,"michel.ramos@deliverit.com.br");
 } catch (Exception ex) {
-    //executar limpeza e sair do método
+    //executar limpeza e sair do método...
+    //ou continuar sem enviar e-mail...
 }
 
 ```
@@ -2087,7 +2080,7 @@ try
 }
 catch (Exception ex)
 {
-    // silent exception
+    // erro silencioso
 }
 ```
 
@@ -2300,20 +2293,20 @@ Comentários são pedidos de desculpas, não um requisito. Um código bom pratic
 ```cs
 public int HashIt(string data)
 {
-    // The hash
+    // hash
     var hash = 0;
 
-    // Length of string
+    // tamanho da string
     var length = data.length;
 
-    // Loop through every character in data
+    // Loop em cada carctere em data
     for (var i = 0; i < length; i++)
     {
-        // Get character code.
+        // Obtém o código do caractere.
         const char = data.charCodeAt(i);
-        // Make the hash
+        // Faz o hash
         hash = ((hash << 5) - hash) + char;
-        // Convert to 32-bit integer
+        // converter para inteiro de 32 bits
         hash &= hash;
     }
 }
@@ -2331,7 +2324,7 @@ public int HashIt(string data)
         const char = data.charCodeAt(i);
         hash = ((hash << 5) - hash) + char;
 
-        // Convert to 32-bit integer
+        // Converte para inteiro de 32 bits
         hash &= hash;
     }
 }
@@ -2350,8 +2343,8 @@ public int Hash(string data)
     for (var i = 0; i < length; i++)
     {
         var character = data[i];
-        // use of djb2 hash algorithm as it has a good compromise
-        // between speed and low collision with a very simple implementation
+        // Usei hash djb2 porque é um bom compromisso
+        // entre velocidade e baixa colisão com implementação simples
         hash = ((hash << 5) - hash) + character;
 
         hash = ConvertTo32BitInt(hash);
@@ -2450,7 +2443,7 @@ void CheackAge(int age){
 
 ## Evite múltiplas chamadas ao banco de dados
 
-Obter dados de um banco de dados envolve diversas tarefas internas tais como alocar de memória, abrir conexão de rede, converter fluxos de bytes em objetos, etc. Se você tem uma lista de id de objetos que precisa obter do banco para fazer alguma tarefa em cima, busque todos em uma chamada e não um por um dentro de um loop. Essa pode ser a diferença entre abrir e fechar 5 mil conexões de rede ou abrir e fechar somente uma conexão.
+Obter dados de um banco de dados envolve diversas tarefas internas tais como alocar de memória, abrir conexão de rede, converter fluxos de bytes em objetos, etc. Se você tem uma lista de id de objetos que precisa obter do banco para fazer alguma tarefa sobre eles, busque todos em uma chamada e não um por um dentro de um loop. Essa pode ser a diferença entre abrir e fechar 5 mil conexões de rede ou abrir e fechar somente uma conexão.
 
 **Ruim**
 
@@ -2497,4 +2490,4 @@ select column1, column2..., columnN from Person p where p.id in ( @idList );
 
 # Referências
 
-1. #### Martin, R. C. (2019). Código Limpo: Habilidades Práticas do Agile Software. Brasil: Alta Books.
+##### 1. Martin, R. C. (2019). Código Limpo: Habilidades Práticas do Agile Software. Brasil: Alta Books.
