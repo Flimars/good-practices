@@ -14,7 +14,7 @@ Adaptado de experiências pessoais e das seguintes fontes:
 
 > "A única métrica válida para qualidade de código é: wtf/minuto" - (Autor desconhecido)
 
-Esse documento contém **princípios de engenharia de software** retirados do livro [Clean Code de Robert C. Martin](#1-martin-r-c-2019-código-limpo-habilidades-práticas-do-agile-software-brasil-alta-books), adaptados para .NET/.NET Core.
+Esse documento contém **princípios de engenharia de software** retirados do livro [Clean Code de Robert C. Martin](#referências), adaptados para .NET/.NET Core.
 
 **Esteja ciente que:**
 
