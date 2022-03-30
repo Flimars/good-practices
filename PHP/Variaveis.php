@@ -1,9 +1,5 @@
 <?php
 
-//Variáveis são essencialmente a representação de algo muito específico, portanto devem possuir nomes muito específicos também.
-//O tamanho do nome de uma variável é proporcional ao seu escopo.
-//Três variáveis diferentes podem armazenar instâncias diferentes de um mesmo objeto, jamais nomeie-as como $objeto1, $objeto2 e $objeto3.
-
 //Funções representam as ações do sistema e elas devem exclusivamente executar uma só ação.
 //Esse é o Principio mais conhecido do SOLID, mesmo que nem saiba o que é SOLID ainda, o da Sigle Responsability (Responsabilidade Única)
 
@@ -22,15 +18,13 @@
 /**
  * A classe Fight representa o assunto Luta e ela agrupa todas as funções e regras relacionadas à luta em si.
  */
+//CORRETO
 class Fight
 {
-    //Não é recomendado utilizar números para variáveis que instanciam o mesmo objeto, até por entendimento, aqui seria melhor usar um nome diferente.
     //ERRADO
     private $player1;
     private $player2;
-    //Pense em variáveis de um programa de banco e o cliente tem mais de uma conta, ele vai instanciar a $conta1, $conta2, $conta3, nem você saberá o que é o que no futuro.
 
-    //Assim define mais que é o jogador número 1 do que $player1, poderia até ser $playerNumberOne e $playerNumberTwo
     //CORRETO
     private $playerOne;
     private $playerTwo;
@@ -57,6 +51,7 @@ class Fight
         }
     }
 
+    //CORRETO
     private function randomHit()
     {
         $randomizeHit = rand(1, 100);
@@ -70,13 +65,15 @@ class Fight
         }
     }
 
-    private function playersStillAlive()
-    {
-        if ($this->playerOne->actualLife <= 0) {
+    //ERRADO
+    private function playersStillAlive() {
+        //ERRADO
+        if ($this->playerOne->actualLife <= 0)
+        {
             $this->playerTwo->victories += 1;
             return false;
         }
-
+        //CORRETO
         if ($this->playerTwo->actualLife <= 0) {
             $this->playerOne->victories += 1;
             return false;
@@ -90,14 +87,10 @@ class Fight
 /**
  * A classe Player representa o Objeto Player que é o personagem escolhido pelo jogador para um combate.
  */
-class Player
-{
-    //Variáveis globais devem ser sempre claras e objetivas, porém cuide do tamanho do seu escopo.
-    //Um $name pode ser o nome de qualquer coisa, nesse caso pode ser o nome do Jogador ou do seu Personagem.
-    //Por isso a definição clara de à quem estamos nos referindo com o $name.
-
+//ERRADO
+class Player {
     //CORRETO
-    private $playersName;
+    private $name;
     private $charactersName;
     private $initialLife;
     private $actualLife;
@@ -106,18 +99,16 @@ class Player
     private $id;
     private $victories;
 
-    //Não há necessidade de prefixar as variáveis com o nome da Classe, principalmente com abreviações, é redundância.
     //ERRADO
     private $playerName;
     private $playInitialLife;
     private $plPowers;
     private $pDescription;
 
-    //Jamais use variáveis que não é possível pronunciar, cheia de abreviações e letras que parecem aleatórias.
     //MUITO ERRADO
     private $nmPlayer;
-    private $nmCh; //Fulano, a variavel 'ene eme cê aga' ta vindo nula... Fica bem estranho essa conversa né?
-    private $plIniLf; //Tente falar isso, como se estivesse conversando com alguém. Conseguiu? Acredito que não!
+    private $nmCh;
+    private $plIniLf;
     private $descr;
 
     public function __construct($id)
@@ -152,7 +143,7 @@ class Player
     {
         //Lista todos os atributos do personagem.
         $attributes = [
-            'playersName' => $this->playersName,
+            'playersName' => $this->name,
             'charactersName' => $this->charactersName,
             'initialLife' => $this->initialLife,
             'actualLife' => $this->actualLife,
