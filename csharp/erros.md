@@ -1,4 +1,4 @@
-# Tratamento de erros
+# Tratamento de Exceções
 
 ## Afinal, o que é exceção?
 

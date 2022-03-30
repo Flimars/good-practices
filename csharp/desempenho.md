@@ -39,7 +39,7 @@ void UpdatePersonEmail( int id, string emailAddress) {
 
 ## Coloque as condições mais frequentes primeiro
 
-Ao escrever um bloco `if/else` com múltiplos blocos, coloque as condições mais frequentes primeiro.
+Ao escrever um bloco `if/else` com múltiplos blocos, coloque as condições que ocorrem com maior frequência primeiro.
 
 **Ruim**
 
