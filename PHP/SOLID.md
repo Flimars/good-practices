@@ -24,7 +24,7 @@ Muitas vezes o princípio da Responsabilidade Única é falada em relação à f
 ------------------------------
 
 ## 2 - Open Close
-Princípio do Aberto e Fechado.
+Princípio do Aberto e Fechado geralmente é .
 
 ------------------------------
 

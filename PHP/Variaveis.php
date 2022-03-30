@@ -2,7 +2,7 @@
 
 //Variáveis são essencialmente a representação de algo muito específico, portanto devem possuir nomes muito específicos também.
 //O tamanho do nome de uma variável é proporcional ao seu escopo.
-//Três variáveis diferentes podem armazenar instâncias diferentes de um mesmo objeto, jamais nomeie-as como $objeto1, $objeto2 e $objeto3.
+//Três variáveis diferentes podem armazenar instâncias diferentes de uma mesma classe, jamais nomeie-as como $objeto1, $objeto2 e $objeto3.
 
 //Funções representam as ações do sistema e elas devem exclusivamente executar uma só ação.
 //Esse é o Principio mais conhecido do SOLID, mesmo que nem saiba o que é SOLID ainda, o da Sigle Responsability (Responsabilidade Única)
