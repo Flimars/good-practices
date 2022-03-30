@@ -608,3 +608,7 @@ public void RequestModule(string url)
 var request = RequestModule(requestUrl);
 InventoryTracker("apples", request, "www.inventory-awesome.io");
 ```
+
+---
+
+[Início](csharp.md)

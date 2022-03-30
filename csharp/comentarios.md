@@ -181,3 +181,7 @@ private int ConvertTo32BitInt(int value)
     return value & value;
 }
 ```
+
+---
+
+[Início](csharp.md)
