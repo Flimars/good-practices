@@ -48,10 +48,10 @@ public function __construct($id)
     $this->actualLife = $this->initialLife;
 }
 
-//INCORRETO - Abertura de chaves na mesma linha da declaração da função.
+//INCORRETO
+//Abertura de chaves na mesma linha da declaração da função.
 private function loadAtributesById() {
-    //Função com apenas uma responsabilidade, de carregar os atributos do Objeto.
-    //Aciona outro método que também possui apenas uma responsabilidade para concluir sua função.
+    //CORRETO - Função com apenas uma responsabilidade, de carregar os atributos do Objeto. Aciona outro método que também possui apenas uma responsabilidade para concluir sua função.
     $character = $this->getCharacterOnDatabase();
 
     $this->charactersName = $character->name;
@@ -60,19 +60,21 @@ private function loadAtributesById() {
     $this->description = $character->description;
 }
 
-//CORRETO - Abertura de chaves na linha abaixo da declaração e nomeada em camelCase.
-//Descrita logo abaixo na ordem de execução.
-private function getCharacterOnDatabase() // Nome da função bem descrito e objetivo.
+//CORRETO
+//Abertura de chaves na linha abaixo da declaração e nomeada em camelCase.
+//Descrita logo abaixo na ordem de execução e nome da função bem descrito.
+private function getCharacterOnDatabase()
 {
     //... código
 }
 
+//CORRETO
 //Funções com poucos ou sem parâmetros, tudo trabalhando com os métodos e atributos do objeto instanciado.
 private function randomHit()
 {
     $randomizeHit = rand(1, 100);
 
-    //Estrutura condicional
+    //Estruturas condicionais
     //CORRETO - Chaves abertas na mesma linha e com espaçamento dos parênteses.
     if ($randomizeHit <= 50) {
         $this->playerOne->calculateDamage();
