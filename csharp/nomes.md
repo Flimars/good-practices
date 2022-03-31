@@ -156,6 +156,70 @@ public double CalculateSalary(int workingDays, int workingHours)
 }
 ```
 
+## Não inclua números em nomes de variáveis, parâmetros, tipos...
+
+Na maioria das vezes eles são uma desculpa para não definir um nome que seja claro e defina a intenção.
+
+**Ruim**
+
+```cs
+void UpdatePerson(int id, Person p1) {
+    Person p2 = db.Persons.Find(id);
+
+
+    p2.Email = p1.Email;
+    p2.Name = p1.Name;
+    // ...
+
+    db.Update(p2);
+}
+```
+
+**Bom**
+
+```cs
+void UpdatePerson(int id, Person updatedPerson) {
+
+    Person oldPerson = db.Persons.Find(id);
+
+    oldPerson.Email = updatedPerson.Email;
+    oldPerson.Name = updatedPerson.Name;
+    // ...
+
+    db.Update(oldPerson);
+}
+```
+
+## Nomenclaturas para C#
+
+Use a tabela abaixo como guia na hora de nomear variáveis, funções, métodos, parâmetros, etc, em projetos .NET/C#.
+
+|Language element|Casing|Example|
+|----------------|------|-------|
+|Namespace|Pascal|System.Drawing|
+|Type parameter|Pascal|TView|
+|Interface|Pascal|IBusinessService|
+|Class, struct|Pascal|AppDomain|
+|Enum|Pascal|ErrorLevel|
+|Enum member|Pascal|FatalError|
+|Resource key|Pascal|SaveButtonTooltipText|
+|Constant field|Pascal|MaximumItems|
+|Private static readonly field|Pascal|RedValue|
+|Private field|Camel|listItem|
+|Non-private field|Pascal|MainPanel|
+|Property|Pascal|BackColor|
+|Event|Pascal|Click|
+|Method|Pascal|ToString|
+|Local function|Pascal|FormatText|
+|Parameter|Camel|typeName|
+|Tuple element names|Pascal|`(string First, string Last) name = ("John", "Doe");var name = (First: "John", Last: "Doe");(string First, string Last) GetName() => ("John", "Doe");`|
+|Variables declared using tuple syntax|Camel|`(string first, string last) = ("John", "Doe");var (first, last) = ("John", "Doe");`|
+|Local variable|Camel|listOfValues|
+
+
+1. Em caso de ambiguidade, a regra mais alta na tabela tem precedência.
+1. A tabela está em inglês porque desenvolvedores estão mais acostumados com essa nomenclatura.
+
 ---
 
 [Início](csharp.md)
