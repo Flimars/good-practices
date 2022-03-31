@@ -128,6 +128,35 @@ select column1, column2..., columnN from Person p where p.id = @id;
 select column1, column2..., columnN from Person p where p.id in ( @idList );
 ```
 
+## Não seja redundante
+
+Não teste se um objeto é `null` para retornar `null`. Se o método retorna `Task<SomeClass>` e a única chamada no corpo do método também retona `Task<SomeClass>`, então não use `await`, apenas remova o `async` da assinatura e retorne a `Task` para o chamador.
+
+**Ruim**
+
+```cs
+public async Task<List<Rules>> GetRules(string ruleType) {
+
+    List<Rules> rules = await repository.GetRulesByTypeAsync(ruleType);
+
+    if (rules == null)
+    {
+        return null;
+    }
+
+    return rules;
+}
+```
+
+**Bom**
+
+```cs
+public Task<List<Rules>> GetRules(strin ruleType) {
+
+    return repository.GetRulesByTypeAsync(ruleType);    
+}
+```
+
 ---
 
 [Início](csharp.md)
