@@ -12,7 +12,7 @@ Adaptado de experiências pessoais e das seguintes fontes:
 
 # Introdução
 
-> "A única métrica válida para qualidade de código é: wtf/minuto" - (Autor desconhecido)
+> "A única métrica válida para qualidade de código é: WTF/minuto" - ([HOLWERDA, Thom, 2008](https://www.osnews.com/story/19266/wtfsm/))
 
 Esse documento contém **princípios de engenharia de software** retirados do livro [Clean Code de Robert C. Martin](#referências), adaptados para .NET/.NET Core.
 
