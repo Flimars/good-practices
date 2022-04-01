@@ -291,6 +291,8 @@ Singleton é um anti-padrão. Parafraseando Brian Burton:
 >
 > 1. Carregam seu estado por todo o ciclo de vida do sistema e isso é mais uma dica para os problemas na hora do teste: você pode terminar em uma situação em que os testes precisam ter uma ordem específica, o que é um grande "não" se tratando de testes unitários. Por quê? Porque todo teste unitário deve ser independente um do outro.
 
+**Observação:** mesmo com as razões acima, tenha em mente que o padrão singleton representa um conceito e, sendo assim, ainda há espaço para sua utilização. Messa os prós e os contras. Geralmente o padrão singleton pode ser implementado por Injeção de Dependência onde a dependência é uma única instância e o padrão Factory, que pode fazer com que determinada classe seja instanciada apenas uma vez, retornando sempre a mesma instância. Em contra partida, isso pode ser tornar um problema se o seu sistema não usa os conceitos de Injeção de Dependência e Factory.
+
 **Ruim**
 
 ```cs
