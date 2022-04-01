@@ -1,6 +1,6 @@
 # Variáveis
 
-## Evite aninhar profundamente e retornar cedo
+## Evite mútiplos `return` em aninhamento profundo
 
 Quando há muitas declarações if/else aninhadas, o código fica difícil de ler. 
 
