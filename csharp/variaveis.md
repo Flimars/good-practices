@@ -2,7 +2,12 @@
 
 ## Evite aninhar profundamente e retornar cedo
 
-Quando há muitas declarações if/else aninhadas, o código fica difícil de ler. **Explícito é melhor do que implícito**.
+Quando há muitas declarações if/else aninhadas, o código fica difícil de ler. 
+
+No exemplo **ruim** temos vários blocos `if/else` e dentro de cada bloco existe um `return true/false;`. No exemplo **bom** existe apenas um ponto de saída da função (apenas um `return`), o que é muito bom. Além disso, de alguma forma se consegue diminuir o número de condicionais.
+No fim das contas, o código **bom** deixa explícito o que está acontecendo, enquanto o código ruim obriga o leitor a manter um mapa mental de cada `if/else/return` no caminho.
+
+**Explícito é melhor do que implícito**.
 
 **Ruim**
 
