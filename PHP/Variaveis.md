@@ -6,7 +6,8 @@
 - O tamanho do nome de uma variável deve ser proporcional ao seu escopo.
 - Três variáveis diferentes podem armazenar instâncias diferentes de uma mesma classe, jamais nomeie-as como $objeto1, $objeto2 e $objeto3.
 - Variáveis também devem seguir o Princípio da Responsabilidade Única, não devendo ser alterada de tipo ou objetivo durante o código, $contaCorrente, sempre será $contaCorrente.
-- A definição de **camelCase** para nomear variáveis é um consensso, porém não está documentada em nenhuma PSR.  
+- A definição de **camelCase** para nomear variáveis é um consensso, porém não está documentada em nenhuma PSR.
+- Evite o uso de Notação Húngara para nomera variáveis (Uso de prefixo abreviado com o tipo da variável.)  
 </br>
 
 ```PHP
@@ -25,7 +26,7 @@ class AccountManagement implements AccountInterface
     private $contaPoupança;
     private $contaInvestimento;
 
-    public function findAccount()
+    public function findAccountByClientId()
     {
        $this->contaCorrentePessoaFisica = (new ContaCorrente())->find($idPessoaFisica);
        $this->contaCorrentePessoaJuridica = (new ContaCorrente())->find($idPessoaJuridica);
@@ -33,7 +34,7 @@ class AccountManagement implements AccountInterface
 }
 ```
 - Variáveis de instância, ou globais, devem ser **sempre** **claras** e **objetivas**, porém cuide do tamanho do seu escopo para que essa variável não se perca no objetivo quando utilizada em muitas funções.
-- Uma variável `$name` pode ser o nome de qualquer coisa, nesse caso está ligada à classe, portanto é o nome do Jogador. Por isso a definição clara de **à quem** estamos nos referindo com o `$name` é essencial.
+- Uma variável `$name` pode ser o nome de qualquer coisa, no caso abaixo está ligada à classe, portanto é o nome do Jogador. Por isso a definição clara de **à quem** estamos nos referindo com o `$name` é essencial.
 - Não há necessidade de prefixar as variáveis com o nome da *Classe*, **principalmente** com abreviações, é redundância.
 - **Jamais** use variáveis que não é possível pronunciar, cheia de abreviações e letras que parecem aleatórias.  
 </br>
@@ -89,6 +90,3 @@ class Fight
 
 ---------------------------------  
 </br>
-
-## Fontes:
-- https://www.php-fig.org/psr/
