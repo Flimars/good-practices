@@ -1,6 +1,7 @@
 # Boas Práticas e Código Limpo
 
-## Comentários!
+## Comentários
+
 *"Ahhh... os insólitos comentários.  
 Você pode não notá-los,  
 pode não entendê-los,  
@@ -10,7 +11,8 @@ E justamente não notá-los ou entendê-los
 se um comentário chegou à esse ponto,  
 já parte do príncipio que ele não devia existir."*  
 
-### Pontos importantes:
+--------------------------------
+
 - Comentários são uma coisa complicada, começamos daqui!
 - Quando se comenta algo, um trecho de código por exemplo, significa que ele não está tão bem explícito como deveria. Nesse caso, ainda temos o problema de mantér, além do código atualizado, esse comentário também atualizado.
 - Um comentário pode ser esquecido no meio do código, fazendo com que sua importância se torne um incômodo incoveniente para novos desenvolvedores, que terão que entender do que se trata.
@@ -20,13 +22,13 @@ já parte do príncipio que ele não devia existir."*
 - Qualquer comentário, **QUALQUER UM** deles, mesmo os que não deveriam existir, devem ser bem escritos, para que o próximo desenvolvedor que trabalhar no código saiba do que se trata e possa melhora o código ao ponto de eliminar esse comentário.
 - Algumas vezes consideramos eles necessários, outras vezes os escrevemos para deixar uma mensagem engraçada para o próximo colega, mas **geralmente eles descrevem as nossas falhas** em escrever um código claro e devem ser evitados à qualquer custo.
 - Jamais deixe códigos comentados, para versionamento de código utilize ferramentas como o GIT, elimine-os e limpe caminho para novos códigos.  
-</br>
 
--------------------------
-## Exemplos  
-</br>
+--------------------------------
+
+## Exemplos
 
 Exemplo de comentário que pode ser aplicado, com cautela.
+
 ```PHP
 /**
  * Esse é um DOC BLOCK aceito.
@@ -65,5 +67,3 @@ class CharacterController
   }
 }
 ´´´
-
----------------------------------

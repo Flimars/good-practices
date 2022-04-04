@@ -1,12 +1,13 @@
 # Boas Práticas e Código Limpo
 
-## Estruturas condicionais e de repetição!
+## Estruturas condicionais e de repetição
 
 Algumas das boas práticas aqui apresentadas foram retiradas das PSRs do _PHP-FIG_ e outras do artigo sobre _Object Calisthenics_, referenciados [aqui](php.md).
 
 1. Use, sempre que possível, o retorno antecipado da função (early return). Dessa forma seguimos a regra de **"Don't use the ELSE keyword"** do artigo sobre calistenia. O ELSE pode causar muitas confusões em um código, evitar o uso dele aplicando Early Return, por exemplo, garante um código mais claro para o leitor.
 
 Ruim
+
 ```PHP
 private function randomHit()
 {
@@ -23,6 +24,7 @@ private function randomHit()
 ```
 
 Bom
+
 ```PHP
 private function randomHit()
 {
@@ -35,9 +37,11 @@ private function randomHit()
     return $this->playerTwo->calculateDamage(); // Return que seria feito no ELSE.
 }
 ```
+
 2. Evite estruturas aninhadas, é recomendado manter apenas um nível de identação por função. É possível aplicar essa regra, também da Calistenia de Objetos, usando o Method Extract, extraindo aquele trecho de código que gerou a próxima identação e transformando-o em uma função.
 
 Ruim
+
 ```PHP
 public function roundFight()
 {
@@ -54,6 +58,7 @@ public function roundFight()
 ```
 
 Bom
+
 ```PHP
 public function roundFight()
 {
@@ -82,6 +87,7 @@ public function playersStillAlive()
 5. Espaçamentos entre a **(condição da estrutura)** e o nome da estrutura e da chave de abertura.
 
 Ruim
+
 ```PHP
 private function ifFunctionJustForExample()
 {
@@ -104,6 +110,7 @@ private function ifFunctionJustForExample()
 ```
 
 Bom
+
 ```PHP
 private function ifFunctionJustForExample()
 {
