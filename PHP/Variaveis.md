@@ -1,6 +1,6 @@
 # Boas Práticas e Código Limpo
 
-## Variáveis!
+## Variáveis
 
 1. Variáveis são essencialmente a representação de algo muito específico, portanto devem possuir nomes muito específicos também.
 2. O tamanho do nome de uma variável deve ser proporcional ao seu escopo.
@@ -10,6 +10,7 @@
 6. Evite o uso de Notação Húngara para nomera variáveis. _- Uso de prefixo abreviado com o tipo da variável_.
 
 Ruim
+
 ```PHP
 class AccountManagement implements AccountInterface
 {
@@ -22,6 +23,7 @@ class AccountManagement implements AccountInterface
 ```
 
 Bom
+
 ```PHP
 class AccountManagement implements AccountInterface
 {
@@ -45,10 +47,11 @@ class AccountManagement implements AccountInterface
 
 1. Variáveis de instância, ou globais, devem ser **sempre claras e objetivas**, porém cuide do tamanho do seu escopo para que essa variável não se perca no objetivo quando utilizada em muitas funções.
 2. Uma variável `$name` pode ser o nome de qualquer coisa, no caso abaixo está ligada à classe, portanto é o nome do Jogador. Por isso a definição clara de **à quem** estamos nos referindo com o `$name` é essencial.
-3. Não há necessidade de prefixar as variáveis com o nome da *Classe*, **principalmente** com abreviações, é **redundância**.
-4.  **Jamais** use variáveis que não é possível pronunciar, cheia de abreviações e letras que parecem aleatórias.
+3. Não há necessidade de prefixar as variáveis com o nome da _Classe_, **principalmente** com abreviações, é **redundância**.
+4. **Jamais** use variáveis que não é possível pronunciar, cheia de abreviações e letras que parecem aleatórias.
 
 **MUITO** Ruim
+
 ```PHP
 class Player
 {
@@ -63,6 +66,7 @@ class Player
 ```
 
 Ruim
+
 ```PHP
 class Player
 {
@@ -79,6 +83,7 @@ class Player
 ```
 
 Bom
+
 ```PHP
 class Player
 {
