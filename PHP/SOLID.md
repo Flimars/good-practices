@@ -77,3 +77,5 @@ Um contexto interessante para pensar sobre a Inversão de Dependência é:
 > "*Voce usa óculos e precisa trocar o seu óculos por um novo, esse princípio garante que o novo óculos possua as mesmas características básicas que o antigo, para que ele encaixe perfeitamente no seu rosto e nariz, mesmo que seja de lentes escuras ou com grau maior, sem que seja necessário você mandar o óculos para realizar ajustes nas hastes ou nas plaquetas depois que já o trocou pelo antigo.*"
 
 -------------------------------
+
+[Início](PHP.md)

@@ -7,7 +7,7 @@
 3. Três variáveis diferentes podem armazenar instâncias diferentes de uma mesma classe, evite nomea-las como $objeto1, $objeto2 e $objeto3.
 4. Variáveis também devem seguir o Princípio da Responsabilidade Única, não devendo ser alterada de tipo ou objetivo durante o código, $contaCorrente, sempre será $contaCorrente e uma string sempre deve ser uma string.
 5. A definição de **camelCase** para nomear variáveis é um consenso, porém não está documentada em nenhuma PSR.
-6. Evite o uso de Notação Húngara para nomera variáveis. _- Uso de prefixo abreviado com o tipo da variável_.
+6. Evite o uso de Notação Húngara para nomear variáveis. _- Uso de prefixo abreviado com o tipo da variável_.
 
 Ruim
 
@@ -107,3 +107,5 @@ class Fight
     }
 }
 ```
+
+[Início](PHP.md)

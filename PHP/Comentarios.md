@@ -42,7 +42,7 @@ class CharacterModel
 }
 ```
 
-No exemplo abaixo um comentário desnecessário, seria melhor especificar seu objetivo no nome da função e sem uso de redundância, já que estamos lidando com a Controladora de Personagens.
+No exemplo abaixo um comentário desnecessário, seria melhor especificar seu objetivo no nome da função e redundância, já que estamos lidando com a Controladora de Personagens.
 
 ```PHP
 class CharacterController
@@ -66,4 +66,6 @@ class CharacterController
     //...
   }
 }
-´´´
+```
+
+[Início](PHP.md)

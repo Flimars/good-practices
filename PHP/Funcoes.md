@@ -91,3 +91,5 @@ private function randomHit()
     }
 }
 ```
+
+[Início](PHP.md)
