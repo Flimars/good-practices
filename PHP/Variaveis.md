@@ -27,12 +27,13 @@ Bom
 ```PHP
 class AccountManagement implements AccountInterface
 {
-    //Dessa forma fica mais claro, você saberá exatamente qual conta é o que no futuro do código e o próximo desenvolvedor entenderá muito melhor as variáveis e para que elas servem.
+    //Dessa forma fica mais claro, você saberá exatamente qual conta é o que no futuro do código
+    //O próximo desenvolvedor entenderá muito melhor as variáveis e para que elas servem.
 
     private $contaCorrentePessoaFisica;     //<- Nome grande, explicativo.
     //ou
-    private $contaCorrenteCPF // <-Identificando que é de CPF, pessoa física.
-    private $contaCorrenteCNPJ // <-Identificando que é do CNPJ, empresa.
+    private $contaCorrenteCPF; // <-Identificando que é de CPF, pessoa física.
+    private $contaCorrenteCNPJ; // <-Identificando que é do CNPJ, empresa.
 
     private $contaPoupança;
     private $contaInvestimento;
