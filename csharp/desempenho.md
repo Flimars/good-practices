@@ -92,8 +92,8 @@ void UpdateTax (int[] employeeList){
 
     foreach( int id in employeeList)
     {
-        //fará uma chamada para cada item na 
-        Person person = db.Person.Find(id);lista
+        //fará uma chamada para cada item na lista
+        Person person = db.Person.Find(id);
         taxService.CalculateTax(person.Salary);
     }
 }
@@ -125,7 +125,7 @@ select column1, column2..., columnN from Person p where p.id = @id;
 **Bom**
 
 ```sql
-select column1, column2..., columnN from Person p where p.id in ( @idList );
+select column1, column2..., columnN from Person p where p.id in ( id1, id2, id3 ... idN );
 ```
 
 ## Não seja redundante
