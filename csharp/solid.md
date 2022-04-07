@@ -10,7 +10,7 @@
 - I: Interface Segregation Principle
 - D: Dependency Inversion Principle
 
-## S: Princípio da Responsabilidade Uníca
+## S: Princípio da Responsabilidade Única
 
 Como o declarado no Clean Code, "nunca deve haver mais de um motivo para uma classe mudar". É tentador entulhar uma classe de funcionalidades, como quando vamos viajar levando apenas uma mala. O problema é que a classe não será coesa conceitualmente e ela lhe dará vários motivos para mudanças. Minimizar o tempo que se leva para modificar uma classe é importante.
 
