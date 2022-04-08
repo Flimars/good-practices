@@ -51,6 +51,21 @@ private function randomHit()
 
     return $this->playerTwo->calculateDamage(); // Return que seria feito no ELSE.
 }
+
+
+private function exampleWithEarlyReturnInsteadElses($numberOne, $numberTwo)
+{
+    if ($numberOne < $numberTwo) {
+        return 'NUMBER ONE É MENOR'; // <-- Early Return
+    }
+
+    if ($numberOne > $numberTwo) {
+        return 'NUMBER TWO É MENOR'; // <-- Early Return
+    }
+
+    return 'IGUAL';
+}
+
 ```
 
 2. Evite estruturas aninhadas, é recomendado manter apenas um nível de identação por função. É possível aplicar essa regra, também da Calistenia de Objetos, usando o Method Extract, extraindo aquele trecho de código que gerou a próxima identação e transformando-o em uma função.
@@ -69,19 +84,8 @@ public function roundFight()
             $playersAlive = false;
         }
     }
-}
 
-private function exampleWithEarlyReturnInsteadElses($numberOne, $numberTwo)
-{
-    if ($numberOne < $numberTwo) {
-        return 'NUMBER ONE É MENOR'; // <-- Early Return
-    }
-
-    if ($numberOne > $numberTwo) {
-        return 'NUMBER TWO É MENOR'; // <-- Early Return
-    }
-
-    return 'IGUAL';
+    //.. Continuação do código
 }
 ```
 
