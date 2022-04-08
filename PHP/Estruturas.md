@@ -21,6 +21,21 @@ private function randomHit()
 
     return $variavel;
 }
+
+private function exampleWithManyElses($numberOne, $numberTwo)
+{
+    // Pense que esse código simples na verdade é uma série de umas 10 linhas em cada IF e ELSE.
+
+    if ($numberOne < $numberTwo) {
+        $response = 'NUMBER ONE É MENOR';
+    } else if ($numberOne > $numberTwo) {
+        $reponse = 'NUMBER TWO É MENOR';
+    } else {
+        $response = 'IGUAL';
+    }
+
+    return $response;
+}
 ```
 
 Bom
@@ -54,6 +69,19 @@ public function roundFight()
             $playersAlive = false;
         }
     }
+}
+
+private function exampleWithEarlyReturnInsteadElses($numberOne, $numberTwo)
+{
+    if ($numberOne < $numberTwo) {
+        return 'NUMBER ONE É MENOR'; // <-- Early Return
+    }
+
+    if ($numberOne > $numberTwo) {
+        return 'NUMBER TWO É MENOR'; // <-- Early Return
+    }
+
+    return 'IGUAL';
 }
 ```
 
