@@ -26,8 +26,10 @@ Muitas vezes o princípio da Responsabilidade Única é falada em relação à f
 ### Classes
 
 - Não deve fazer mais do que seu escopo lhe permite;
-- Se é uma Classe Jogador, ela deve conter apenas funções e atributos de um jogador, jamais ela deve conter, por exemplo, uma alteração do cenário da luta, porque isso seria escopo de uma outra classe provavelmente chamada de Cenário ou Estágio.
+- Classes devem possuir apenas um motivo para serem alteradas;
+- Gerar inúmeros arquivos com classes que sigam o SRP exige cuidado com a organização do projeto.
 - Se uma classe é Controladora, ela tem a responsabilidade de tratar requisições e respostas, porém jamais conter regras de negócio, função essa destinada à classes como a Service, por exemplo.
+- Classes Active Record jamais devem possuir implementações de métodos publicos, qualquer acesso à classe deve ser feita por meio de Repositories.
 
 -------------------------------
 
