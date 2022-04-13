@@ -4,7 +4,7 @@
 
 Algumas das boas práticas aqui apresentadas foram retiradas das PSRs do _PHP-FIG_ e outras do artigo sobre _Object Calisthenics_, referenciados [aqui](php.md).
 
-1. Use, sempre que possível, o retorno antecipado da função (early return). Dessa forma seguimos a regra de **"Don't use the ELSE keyword"** do artigo sobre calistenia. O ELSE pode causar muitas confusões em um código, evitar o uso dele aplicando Early Return, por exemplo, garante um código mais claro para o leitor.
+Use, sempre que possível, o retorno antecipado da função (early return). Dessa forma seguimos a regra de **"Don't use the ELSE keyword"** do artigo sobre calistenia. O ELSE pode causar muitas confusões em um código, evitar o uso dele aplicando Early Return, por exemplo, garante um código mais claro para o leitor.
 
 Ruim
 
@@ -68,7 +68,9 @@ private function exampleWithEarlyReturnInsteadElses($numberOne, $numberTwo)
 
 ```
 
-2. Evite estruturas aninhadas, é recomendado manter apenas um nível de identação por função. É possível aplicar essa regra, também da Calistenia de Objetos, usando o Method Extract, extraindo aquele trecho de código que gerou a próxima identação e transformando-o em uma função.
+Evite estruturas aninhadas, é recomendado manter apenas um nível de identação por função.
+
+É possível aplicar essa regra, também da Calistenia de Objetos, usando o Method Extract, extraindo aquele trecho de código que gerou a próxima identação e transformando-o em uma função.
 
 Ruim
 
@@ -114,9 +116,11 @@ public function playersStillAlive()
 }
 ```
 
-3. Abertura de chaves "{ }" deve ser na mesma linha da declaração da estrutura.
-4. Fechamento de chave na linha posterior à ultima linha de código da estrutura.
-5. Espaçamentos entre a **(condição da estrutura)** e o nome da estrutura e da chave de abertura.
+Abertura de chaves "{ }" deve ser na mesma linha da declaração da estrutura.
+
+Fechamento de chave na linha posterior à ultima linha de código da estrutura.
+
+Espaçamentos entre a **(condição da estrutura)** e o nome da estrutura e da chave de abertura.
 
 Ruim
 
