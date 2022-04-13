@@ -115,8 +115,8 @@ Demora um bom tempo para descobrir o significado de variáveis e funções quand
 ```cs
 public class Employee
 {
-    public Datetime sWorkDate { get; set; } // O que é isso?
-    public Datetime modTime { get; set; } // E isso?
+    public DateTime sWorkDate { get; set; } // O que é isso?
+    public DateTime modTime { get; set; } // E isso?
 }
 ```
 
@@ -125,8 +125,8 @@ public class Employee
 ```cs
 public class Employee
 {
-    public Datetime StartWorkingDate { get; set; }
-    public Datetime ModificationTime { get; set; }
+    public DateTime StartWorkingDate { get; set; }
+    public DateTime ModificationTime { get; set; }
 }
 ```
 
