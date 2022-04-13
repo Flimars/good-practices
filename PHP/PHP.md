@@ -41,7 +41,7 @@ Esse processo pode ser muito mais simples se o código estiver bem escrito. Uma 
 É importante citar que qualquer código pode ser trabalhado pouco a pouco, basta que cada desenvolvedor aplique algumas dessas práticas conforme for implementando suas funcionalidades ou correções, bem como o revisor pode sugerir ao desenvolvedor algumas melhorias, de forma que esse código, mesmo que leve 10 anos, venha um dia a se tornar um código limpo. É o que sugere a regra abaixo que vem muito à calhar para a nossa área.
 
 > Deixe a área do acampamento mais limpa do que como você à encontrou!  
-> \- *Regra dos escorteiros da **Boys Scouts of America***
+> \- *Regra dos escoteiros da **Boys Scouts of America***
 
 -----------------------------
 
