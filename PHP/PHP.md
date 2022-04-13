@@ -65,3 +65,5 @@ Espero que esse guia seja útil para quem está lendo tanto quanto foi útil par
 [Martin, R. C. (2019). Código Limpo: Habilidades Práticas do Agile Software. Brasil: Alta Books.](https://www.google.com/aclk?sa=L&ai=DChcSEwjM2JH8u_b2AhXECpEKHbfdCscYABAOGgJjZQ&sig=AOD64_2I5BFrxKgOwCXwM7Scgz-fh-dNPg&ctype=5&q=&ved=2ahUKEwianIb8u_b2AhXasJUCHbVkCicQ9aACegQIAhBE&adurl=)
 
 [Object Calisthenics - William Durand](https://williamdurand.fr/2013/06/03/object-calisthenics/)
+
+[SOLID com PHP](https://imasters.com.br/back-end/solid-com-php#:~:text=SOLID%20s%C3%A3o%20os%20cinco%20principais,com%20exemplos%20escritos%20em%20PHP.)
