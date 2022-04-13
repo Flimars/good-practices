@@ -57,6 +57,8 @@ Uma variável `$name` pode ser o nome de qualquer coisa, no caso abaixo está li
 
 Não há necessidade de prefixar as variáveis com o nome da _Classe_, **principalmente** com abreviações, é **redundância**.
 
+Não use nomes com teor cômico, citações de filmes ou referências, o humor da declaração se torna um problema para quem o lê.
+
 **Jamais** use variáveis que não é possível pronunciar, cheia de abreviações e letras que parecem aleatórias.
 
 **MUITO** Ruim
@@ -83,11 +85,18 @@ class Player
     private $playerName;
     private $playerCharactersName;
     private $playerInitialLife;
-     //Em casos extremos uma abreviação do nome nos dois últimos exemplos.
+
+    //Em casos extremos uma abreviação do nome nos dois últimos exemplos.
     private $plPowers;
     private $plDescription;
+
     //Ou apenas uma variável abreviada sem motivo algum.
     private $descr;
+
+    // Será que todos que lerem entenderão o objetivo dessas variáveis?
+    private $fireInTheHole;
+    private $weHaveAProblemHouston;
+    private $rogerThat;
 }
 ```
 
