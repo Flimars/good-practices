@@ -46,7 +46,7 @@ Ao escrever um bloco `if/else` com múltiplos blocos, coloque as condições que
 **Ruim**
 
 ```cs
-void CheackAge(int age)
+void CheckAge(int age)
 {
     if(age < 6) 
     {
@@ -70,24 +70,27 @@ void CheackAge(int age)
 **Bom**
 
 ```cs
-void CheackAge(int age)
+void CheckAge(int age)
 {
     if(age >= 18)// a maioria dos cientes são adultos
     {
         handleAdults();
+        return;
     }
-    else if (age >= 13)
+    
+    if (age >= 13)
     {
         handleTeenager();
+        return;
     }
-    else if (age >= 6)
+    
+    if (age >= 6)
     {
         handleChild();
+        return;
     }
-    else 
-    {
-        throw new InvalidAgeException();
-    }
+    
+    throw new InvalidAgeException();    
 }
 ```
 
