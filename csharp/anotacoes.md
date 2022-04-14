@@ -26,7 +26,7 @@ A ideia por trás dos seus princípios é tornar o desenvolvimento e a manutenç
 - Escrever exemplos nas 3 linguagens (C#, Java, PHP)
 - Qualquer um escreve um código que o computador pode ler. Mas um bom programador escrevem código que humanos podem ler.
 
-```java
+```cs
 public class Classe
 {
     public void Funcao(bool condicao)

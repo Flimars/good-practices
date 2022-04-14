@@ -39,8 +39,10 @@ class BankAccount
 {
     private double _balance = 0.0D;
 
-    pubic double Balance {
-        get {
+    public double Balance
+    {
+        get 
+        {
             return _balance;
         }
     }

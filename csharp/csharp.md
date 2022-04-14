@@ -28,7 +28,7 @@ Você deve usar esse guia porque nem todo desenvolvedor:
 
 * está ciente de que se lê código 10x mais do que se escreve código.
 * está ciente das potenciais armadilhas de certas construções em C#.
-* está atualizado sobre certas convensões do .NET Framework, tais como: `IDisposable, async / await` ou a natureza da execução adiada do LINQ.
+* está atualizado sobre certas convenções do .NET Framework, tais como: `IDisposable, async / await` ou a natureza da execução adiada do LINQ.
 * está ciente do impacto de usar (ou não usar) soluções específicas em aspectos como segurança, performance, suporte a multi-linguagem, etc.
 * percebe que nem todo desenvolvedor é capacitado, habilidoso ou experiente para entender soluções elegantes, porém, potencialmente muito abstratas.
 

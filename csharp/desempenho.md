@@ -7,11 +7,12 @@ Se você precisa validar dados, faça isso antes do trabalho pesado evitando, as
 **Ruim**
 
 ```cs
-void UpdatePersonEmail( int id, string emailAddress) {
-
+void UpdatePersonEmail(int id, string emailAddress) 
+{
     Person person = db.Person.find(id);// Desnecessário
 
-    if( !isValidEmailAddress(emailAddress)) {
+    if(!isValidEmailAddress(emailAddress)) 
+    {
         throw new Exception("E-mail inválido");
     }
 
@@ -24,9 +25,10 @@ void UpdatePersonEmail( int id, string emailAddress) {
 **Bom**
 
 ```cs
-void UpdatePersonEmail( int id, string emailAddress) {
-    
-     if( !isValidEmailAddress(emailAddress)) {
+void UpdatePersonEmail(int id, string emailAddress) 
+{    
+    if( !isValidEmailAddress(emailAddress)) 
+    {
         throw new Exception("E-mail inválido");
     }
 
@@ -44,18 +46,22 @@ Ao escrever um bloco `if/else` com múltiplos blocos, coloque as condições que
 **Ruim**
 
 ```cs
-void CheackAge(int age){
-
-    if( age < 6) {
+void CheackAge(int age)
+{
+    if(age < 6) 
+    {
         throw new InvalidAgeException();
     }
-    else if (age >= 13 && age < 18) {
+    else if (age >= 13 && age < 18)
+    {
         handleTeenager();
     }
-    else if (age >= 6 && age < 13>){
+    else if (age >= 6 && age < 13)
+    {
         handleChild();
     }
-    else if ( age >= 18) {
+    else if (age >= 18)
+    {
         handleAdult();
     }
 }
@@ -64,18 +70,22 @@ void CheackAge(int age){
 **Bom**
 
 ```cs
-void CheackAge(int age){
-
-    if( age >= 18) {// a maioria dos cientes são adultos
+void CheackAge(int age)
+{
+    if(age >= 18)// a maioria dos cientes são adultos
+    {
         handleAdults();
     }
-    else if (age >= 13) {
+    else if (age >= 13)
+    {
         handleTeenager();
     }
-    else if (age >= 6){
+    else if (age >= 6)
+    {
         handleChild();
     }
-    else {
+    else 
+    {
         throw new InvalidAgeException();
     }
 }
@@ -88,8 +98,8 @@ Obter dados de um banco de dados envolve diversas tarefas internas tais como alo
 **Ruim**
 
 ```cs
-void UpdateTax (int[] employeeList){
-
+void UpdateTax (int[] employeeList)
+{
     foreach( int id in employeeList)
     {
         //fará uma chamada para cada item na lista
@@ -102,8 +112,8 @@ void UpdateTax (int[] employeeList){
 **Bom**
 
 ```cs
-void UpdateTax (int[] employeeList){
-
+void UpdateTax (int[] employeeList)
+{
     //obterá todos os empregados em uma única chamada
     List<Person> personList = db.Person.Where(x=>employeeList.Contains(x.Id)).ToList();
 
@@ -135,8 +145,8 @@ Não teste se um objeto é `null` para retornar `null`. Se o método retorna `Ta
 **Ruim**
 
 ```cs
-public async Task<List<Rules>> GetRules(string ruleType) {
-
+public async Task<List<Rules>> GetRules(string ruleType)
+{
     List<Rules> rules = await repository.GetRulesByTypeAsync(ruleType);
 
     if (rules == null)
@@ -151,8 +161,8 @@ public async Task<List<Rules>> GetRules(string ruleType) {
 **Bom**
 
 ```cs
-public Task<List<Rules>> GetRules(strin ruleType) {
-
+public Task<List<Rules>> GetRules(strin ruleType)
+{
     return repository.GetRulesByTypeAsync(ruleType);    
 }
 ```

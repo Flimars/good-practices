@@ -163,9 +163,9 @@ Na maioria das vezes eles são uma desculpa para não definir um nome que seja c
 **Ruim**
 
 ```cs
-void UpdatePerson(int id, Person p1) {
+void UpdatePerson(int id, Person p1)
+{
     Person p2 = db.Persons.Find(id);
-
 
     p2.Email = p1.Email;
     p2.Name = p1.Name;
@@ -178,8 +178,8 @@ void UpdatePerson(int id, Person p1) {
 **Bom**
 
 ```cs
-void UpdatePerson(int id, Person updatedPerson) {
-
+void UpdatePerson(int id, Person updatedPerson)
+{
     Person oldPerson = db.Persons.Find(id);
 
     oldPerson.Email = updatedPerson.Email;

@@ -12,10 +12,12 @@ Resposta: quando não for possível continuar a partir do ponto atual no código
 **Ruim**
 
 ```cs
-Person UpdatePersonEmail(int personId, string emailAddress){    
+Person UpdatePersonEmail(int personId, string emailAddress)
+{    
     Person person = db.person.find(personId);
 
-    if(person == null){
+    if(person == null)
+    {
         return null;
     }
 
@@ -32,10 +34,12 @@ person = UpdatePersonEmail(-1,"michel.ramos@deliverit.com.br");
 **Bom**
 
 ```cs
-Person UpdatePersonEmail( int personId, string emailAddress) {    
+Person UpdatePersonEmail( int personId, string emailAddress)
+{    
     Person person = db.person.find(personId);
 
-    if( person == null ) {
+    if( person == null )
+    {
         throw new Exception("Pessoa não encontrada.");
     }
 
@@ -48,7 +52,8 @@ Person UpdatePersonEmail( int personId, string emailAddress) {
 try 
 {
     person = UpdatePersonEmail(-1,"michel.ramos@deliverit.com.br");
-} catch (Exception ex) {
+} 
+catch (Exception ex) {
     //executar limpeza e sair do método...
     //ou continuar sem enviar e-mail...
 }
